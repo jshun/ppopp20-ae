@@ -47,30 +47,6 @@ static void setWorkers(int n) {
   }
 }
 
-// intel cilk+
-#elif defined(CILKP)
-#include <cilk/cilk.h>
-#define parallel_for cilk_for
-#define parallel_main main
-#define parallel_for_1 _Pragma("cilk grainsize = 1") cilk_for
-#define parallel_for_256 _Pragma("cilk grainsize = 256") cilk_for
-#include <cilk/cilk_api.h>
-#include <sstream>
-#include <iostream>
-#include <cstdlib>
-static int getWorkers() {
-  return __cilkrts_get_nworkers();
-}
-static void setWorkers(int n) {
-  __cilkrts_end_cilk();
-  //__cilkrts_init();
-  std::stringstream ss; ss << n;
-  if (0 != __cilkrts_set_param("nworkers", ss.str().c_str())) {
-    std::cerr << "failed to set worker count!" << std::endl;
-    std::abort();
-  }
-}
-
 // openmp
 #elif defined(OPENMP)
 #include <omp.h>

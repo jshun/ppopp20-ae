@@ -13,45 +13,25 @@ to do
 Organization
 --------
 
-The code for Ligra, Ligra+, and Ligra-H is located in the ligra/
-directory.  The code for the applications is in the apps/ directory,
-which is where compilation should be performed.  Example inputs are
-provided in the inputs/ directory. Graph and hypergraph utilities are
-provided in the utils/ directory.
+The code for Ligra-H is located in the ligra/ directory.  The code for
+the hypergraph applications is in the apps/hyper/ directory, which is
+where compilation should be performed.  Graph and hypergraph utilities
+are provided in the utils/ directory.
 
 Compilation
 --------
 
-Compilation is done from within the apps/ directory. The compiled code
-will work on both uncompressed and compressed graphs and hypergraphs.
-
-Compilers
-
-* g++ &gt;= 5.3.0 with support for Cilk Plus
-* g++ &gt;= 5.3.0 with OpenMP
-* Intel icpc compiler
+Compilation is done from within the apps/hyper/ directory. Experiments
+in the paper were done using the g++ version 7.4.0 compiler with
+support for Cilk Plus on Ubuntu 7.4.0. Any version of g++ with support
+for Cilk Plus on an Ubuntu OS can be used to run the code.
 
 To compile with g++ using Cilk Plus, define the environment variable
-CILK. To compile with icpc, define the environment variable MKLROOT
-and make sure CILK is not defined.  To compile with OpenMP, define the
-environment variable OPENMP and make sure CILK and MKLROOT are not
-defined.  Using Cilk Plus seems to give the best parallel performance in
+CILK. To compile with OpenMP, define the
+environment variable OPENMP and make sure CILK is not
+defined.  Using Cilk Plus gives the best parallel performance in
 our experience.  To compile with g++ with no parallel support, make
-sure CILK, MKLROOT and OPENMP are not defined.
-
-Note: OpenMP support in Ligra has not been thoroughly tested. If you
-experience any errors, please send an email to [Julian
-Shun](mailto:jshun@mit.edu).
-
-For processing compressed graph and hypergraph files, there are three
-compression schemes currently implemented that can be used---byte
-codes, byte codes with run-length encoding and nibble codes. By
-default, the code is compiled for byte codes with run-length
-encoding. To use byte codes instead, define the environment variable
-BYTE, and to use nibble codes instead, define the environment variable
-NIBBLE. Parallel decoding within a vertex can be enabled by defining
-the environment variable PD (by default, a vertex's edge list is
-decoded sequentially).
+sure CILK and OPENMP are not defined.
 
 After the appropriate environment variables are set, to compile,
 simply run
