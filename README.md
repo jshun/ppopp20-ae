@@ -6,6 +6,7 @@ to do
 
 * script to download datasets on Amazon S3
 * script for converting to clique and running in Ligra
+* generate weighted clique for friendster
 
 Organization
 --------
@@ -66,7 +67,8 @@ The following command downloads or generates all of the datasets used
 in the paper. By default, the large Rand2 hypergraph and the
 clique-expanded graph for Friendster are not downloaded, however they
 will be included if the environment variable LARGE is defined before
-running the script.
+running the script. The total storage required without the large
+datasets is xxx and with the large datasets is xxx.
 
 
 ```
@@ -133,16 +135,16 @@ $ ./run_thresholds | tee thresholds.txt
 
 The following computes the running time on the clique-expanded graph
 for Friendster using breadth-first search, connected components, and
-SSSP in Ligra. This script assumes the clique-expanded graph for
-Friendster is downloaded (see instructions above for downloading the
-datasets).
+SSSP in Ligra. This script assumes that the clique-expanded graph for
+Friendster has been downloaded (see instructions above for downloading
+the datasets).
 
 ```
 $ cd ..;
 $ ./run_clique | tee clique.txt
 ```
 
-The remaining sections contain instructions to run any additional
+The remaining sections contain instructions to run any individual
 experiments that the reviewer may want to run.
 
 Running code in Ligra-H
