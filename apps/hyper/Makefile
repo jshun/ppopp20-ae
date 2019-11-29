@@ -45,7 +45,11 @@ COMMON= ligra.h graph.h compressedVertex.h vertex.h utils.h IO.h parallel.h gett
 
 ALL= hypergraphEncoder hypergraphDecoder HyperReader WeightedHyperReader HyperBFS HyperBPath HyperCC HyperSSSP HyperPageRank HyperBC HyperMIS HyperKCore HyperKCore-Efficient HyperBFS-EdgeAware HyperCC-EdgeAware HyperSSSP-EdgeAware HyperPageRank-EdgeAware HyperBC-EdgeAware HyperMIS-EdgeAware HyperKCore-EdgeAware HyperKCore-Efficient-EdgeAware HyperBFS-Sparse HyperBFS-Dense HyperCC-Sparse HyperCC-Dense HyperSSSP-Sparse HyperSSSP-Dense HyperPageRank-Sparse HyperPageRank-Dense HyperBC-Sparse HyperBC-Dense HyperMIS-Sparse HyperMIS-Dense HyperKCore-Efficient-Sparse HyperKCore-Efficient-Dense HyperBFS-Sparse-EdgeAware HyperBFS-Dense-EdgeAware HyperCC-Sparse-EdgeAware HyperCC-Dense-EdgeAware HyperSSSP-Sparse-EdgeAware HyperSSSP-Dense-EdgeAware HyperPageRank-Sparse-EdgeAware HyperPageRank-Dense-EdgeAware HyperBC-Sparse-EdgeAware HyperBC-Dense-EdgeAware HyperMIS-Sparse-EdgeAware HyperMIS-Dense-EdgeAware HyperKCore-Efficient-Sparse-EdgeAware HyperKCore-Efficient-Dense-EdgeAware
 
+THRESHOLD= HyperBFS-Threshold HyperBFS-Threshold-EdgeAware HyperCC-Threshold HyperCC-Threshold-EdgeAware HyperBC-Threshold HyperBC-Threshold-EdgeAware HyperSSSP-Threshold HyperSSSP-Threshold-EdgeAware
+
 all: $(ALL)
+
+threshold: $(THRESHOLD)
 
 % : %.C $(COMMON)
 	$(PCC) $(PCFLAGS) -o $@ $<
@@ -56,8 +60,8 @@ $(COMMON):
 .PHONY : clean
 
 clean :
-	rm -f *.o $(ALL)
+	rm -f *.o $(ALL) $(THRESHOLD)
 
 cleansrc :
-	rm -f *.o $(ALL)
+	rm -f *.o $(ALL) $(THRESHOLD)
 	rm $(COMMON)

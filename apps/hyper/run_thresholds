@@ -1,7 +1,4 @@
 #!/usr/bin/python
-#
-# run all tests
-#
 
 import os
 import sys
@@ -9,63 +6,64 @@ import signal
 import time
 import subprocess
 
-
-def signal_handler(signal,frame):
-  print "bye\n"
-  sys.exit(0)
-signal.signal(signal.SIGINT,signal_handler)
-
 def shellGetOutput(str) :
   process = subprocess.Popen(str,shell=True,stdout=subprocess.PIPE,
                              stderr=subprocess.PIPE)
   output, err = process.communicate()
   
-  if (len(err) > 0):
-      raise NameError(str+"\n"+output+err)
   return output
+
+print "Running varying threshold experiments..."
+
+
+threads = shellGetOutput("nproc --all")
+
+print "Number of threads on machine = " + threads
+
 
 dataDir = "../../inputs/"
 
-applications = ["HyperBFS","HyperBC","HyperCC"]
-wapplications = ["HyperSSSP"]
+applications = ["HyperBFS-Threshold","HyperBC-Threshold","HyperCC-Threshold"]
+wapplications = ["HyperSSSP-Threshold"]
 
-testfiles = [("com-orkut-ligra","0"),("com-friendster-ligra","0"),("rand-10M-10M-10","0"),("rand-100M-100M-10","0"),("rand-10M-10M-100","0"),("orkut-groupmemberships-hygra","0"),("trackers-hygra","0")]
-testfiles = [("edit-enwiki-hygra","0"),("livejournal-hygra","0")]
-testfiles = [("livejournal-hygra","0")]
+testfiles = [("com-orkut-ligrah","0"),("livejournal-ligrah","0")]
 
-wtestfiles = [("com-orkut-ligra-wgh","0"),("com-friendster-ligra-wgh","0"),("rand-10M-10M-10-wgh","0"),("rand-100M-100M-10-wgh","0"),("rand-10M-10M-100-wgh","0"),("orkut-groupmemberships-hygra-wgh","0"),("trackers-hygra-wgh","0")]
-wtestfiles = [("edit-enwiki-hygra-wgh","0"),("livejournal-hygra-wgh","0")]
-wtestfiles = [("livejournal-hygra-wgh","0")]
+wtestfiles = [("com-orkut-wgh-ligrah","0"),("livejournal-wgh-ligrah","0")]
 
-processors = [1,2,4]+range(8,144+1,8)
-processors = [1]+range(72,144+1,8)
-processors = [144]
-thresholds = range(1,10,1)+range(10,101,10)+[1000,10000,100000,1000000,10000000,100000000]
-#os.system("make clean; make -j16; ~/hog2 250")
+processors = [int(threads)]
+
+print processors
+
+os.system("export CILK=1; make clean; make -j")
+
 for app in applications:
   for testfile in testfiles :
+    if testfile[0] in edgeawarefiles:
+      edgeaware = "-EdgeAware"
+    else:
+      edgeaware = ""
     for t in thresholds:
       for p in processors :
         if p <= 4:
-          ss = "export CILK_NWORKERS="+`p`+"; ./"+app+' -s -rounds 1 -maxiters 1 -r '+testfile[1]+' -t ' +`t`+' '+dataDir+testfile[0]
-        elif p < 72:
-          ss = "export CILK_NWORKERS="+`p`+"; numactl -i all ./" + app + ' -s -rounds 1 -maxiters 1 -r '+testfile[1]+ ' -t ' + `t`+' ' + dataDir + testfile[0]
+          ss = "export CILK_NWORKERS="+`p`+"; ./"+app+edgeaware+' -s -rounds 1 -maxiters 1 -r '+testfile[1]+' -t ' +`t`+' '+dataDir+testfile[0]
         else:
-          ss = "export CILK_NWORKERS="+`p`+"; numactl -i all ./" + app + ' -s -maxiters 1 -r '+testfile[1]+ ' -t ' + `t` + ' ' + dataDir + testfile[0]
-        print app+" "+`p` + " " + `t` + " " + testfile[0] 
+          ss = "export CILK_NWORKERS="+`p`+"; numactl -i all ./" + app+edgeaware+ + ' -s -maxiters 1 -r '+testfile[1]+ ' -t ' + `t` + ' ' + dataDir + testfile[0]
+        print app+edgeaware+" "+`p` + " " + `t` + " " + testfile[0] 
         print shellGetOutput(ss)
         sys.stdout.flush()
 
 for app in wapplications:
   for testfile in wtestfiles :
+    if testfile[0] in edgeawarefiles:
+      edgeaware = "-EdgeAware"
+    else:
+      edgeaware = ""
     for t in thresholds:
       for p in processors :
         if p <= 4:
-          ss = "export CILK_NWORKERS="+`p`+"; ./"+app+' -s -rounds 1 -maxiters 1 -r '+testfile[1]+' -t ' +`t`+' '+dataDir+testfile[0]
-        elif p < 72:
-          ss = "export CILK_NWORKERS="+`p`+"; numactl -i all ./" + app + ' -s -rounds 1 -maxiters 1 -r '+testfile[1]+ ' -t ' + `t`+' ' + dataDir + testfile[0]
+          ss = "export CILK_NWORKERS="+`p`+"; ./"+app+edgeaware+' -s -rounds 1 -maxiters 1 -r '+testfile[1]+' -t ' +`t`+' '+dataDir+testfile[0]
         else:
-          ss = "export CILK_NWORKERS="+`p`+"; numactl -i all ./" + app + ' -s -maxiters 1 -r '+testfile[1]+ ' -t ' + `t` + ' ' + dataDir + testfile[0]
-        print app+" "+`p` + " " + `t` + " " + testfile[0] 
+          ss = "export CILK_NWORKERS="+`p`+"; numactl -i all ./" + app+edgeaware + ' -s -maxiters 1 -r '+testfile[1]+ ' -t ' + `t` + ' ' + dataDir + testfile[0]
+        print app+edgeaware+" "+`p` + " " + `t` + " " + testfile[0] 
         print shellGetOutput(ss)
         sys.stdout.flush()
