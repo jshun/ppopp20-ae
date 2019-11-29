@@ -155,7 +155,7 @@ The paper compares to the MESH hypergraph processing system, which can
 be downloaded from https://github.com/mesh-umn/MESH. If the reviewer
 wishes to test the performance of MESH, please follow the instructions
 on their GitHub page.  The com-orkut hypergraph in MESH can be
-downloaded from xxx. 
+downloaded from https://ppopp20-ae.s3.amazonaws.com/com-orkut-MESH. 
 
 
 
