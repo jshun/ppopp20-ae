@@ -18,7 +18,7 @@ print "Running scalability experiments..."
 
 threads = shellGetOutput("nproc --all")
 
-print "Number of threads = " + threads
+print "Number of threads on machine = " + threads
 
 
 dataDir = "../../inputs/"

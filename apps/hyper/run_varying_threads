@@ -13,12 +13,12 @@ def shellGetOutput(str) :
 
     return output
           
-print "Running scalability experiments..."
+print "Running varying thread experiments..."
 
 
 threads = shellGetOutput("nproc --all")
 
-print "Number of threads = " + threads
+print "Number of threads on machine = " + threads
 
 
 dataDir = "../../inputs/"

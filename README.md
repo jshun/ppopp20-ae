@@ -90,25 +90,26 @@ paper as reported in Table 2, and outputs the numbers to a file:
 
 ```
 $ ./run_scalability | tee results.txt
-$ ./get_speedup | tee speedups.txt
 ```
 
 The following command runs all of algorithms on a varying number of
-threads on Rand1 (Figure 2 in the paper):
+threads on Rand1 (Figure 2 in the paper), and outputs the numbers to a
+file:
 
 ```
 $ ./run_varying_threads | tee varying_threads.txt
 ```
 
 The following command runs all of algorithms on a varying number of
-hyperedges (Figure 3 in the paper):
+hyperedges (Figure 3 in the paper), and outputs the numbers to a file:
 
 ```
 $ ./run_varying_hyperedges | tee varying_hyperedges.txt
 ```
 
 The following computes the running time of sparse, dense, and hybrid
-traversals on com-Orkut and LiveJournal (Figures 4 and 5 in the paper):
+traversals on com-Orkut and LiveJournal (Figures 4 and 5 in the
+paper), and outputs the numbers to a file:
 
 ```
 $ ./run_directions | tee directions.txt
@@ -116,7 +117,7 @@ $ ./run_directions | tee directions.txt
 
 The following computes the running time using different thresholds for
 direction-optimization on com-Orkut and LiveJournal (Figures 6 and 7
-in the paper):
+in the paper), and outputs the numbers to a file:
 
 ```
 $ ./run_thresholds | tee thresholds.txt
