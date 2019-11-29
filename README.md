@@ -5,10 +5,10 @@ to do
 --------
 
 * script to download datasets on Amazon S3
-* script for converting to clique and running in Ligra
+
 * generate weighted clique for friendster
 
-Organization
+Getting Started Guide
 --------
 
 The framework code for Ligra-H is located in the ligra/ directory.
@@ -17,8 +17,7 @@ directory, which is where compilation should be performed for the
 artifact evaluation.  Hypergraph generators and converters are
 provided in the utils/ directory.
 
-Compilation
---------
+
 
 Compilation is done from within the apps/hyper/ directory. Experiments
 in the paper were performed using the g++ version 7.4.0 compiler with
@@ -28,14 +27,18 @@ PowerEdge R930 with four 2.4GHz 18-core E7-8867 v4 Xeon processors)
 with 1TB of RAM. We use 'numactl -i all' for parallel experiments for
 better performance.
 
-Any version of g++ with support for Cilk Plus on an Ubuntu OS can be
-used for the artifact evaluation.  To compile with g++ using Cilk
-Plus, define the environment variable CILK. (Note: OpenMP compilation
-is also supported, but we found that Cilk Plus gives the best
-performance and thus should be used for the artifact evaluation.)
-Resuls will vary depending on the machine (number of cores and
-sockets, cache sizes, memory bandwidth, clock speed, etc.) used for
-experiments.
+First, install a version of g++ with support for Cilk Plus (g++
+version 5.4.0 or later) on a Linux machine.  If using AWS EC2 with
+RedHat OS the following instructions can be used to install g++ with
+Cilk Plus:
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/compile-software.html.
+
+To compile with g++ using Cilk Plus, define the environment variable
+CILK. (Note: OpenMP compilation is also supported, but we found that
+Cilk Plus gives the best performance and thus should be used for the
+artifact evaluation.)  Resuls will vary depending on the machine
+(number of cores and sockets, cache sizes, memory bandwidth, clock
+speed, etc.) used for experiments.
 
 The commands for compilation are as follows:
 
@@ -50,20 +53,17 @@ $ make clean #removes all executables
 $ make cleansrc #removes all executables and linked files from the ligra/ directory
 ```
 
+Python 2.7 is used for running the scripts, so make sure it is installed.
 
 
-Running all experiments in the paper
+Step-by-Step Instructions
 --------
 
 This section describes all of the commands needed to run the
 experiments presented in the paper.
 
-First, install the g++ compiler with Cilk Plus support. Python 2.7 is
-used for running the scripts.
 
-
-
-The following command downloads or generates all of the datasets used
+The following command downloads all of the datasets used
 in the paper. By default, the large Rand2 hypergraph and the
 clique-expanded graph for Friendster are not downloaded, however they
 will be included if the environment variable LARGE is defined before
