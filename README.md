@@ -92,11 +92,13 @@ $ cd apps/hyper/
 
 
 The following command runs all of the scalability experiments in the
-paper as reported in Table 2, and outputs the numbers to a
-file. Experiments on more than 4 threads are run three times, except
-for MIS, which is only run once since the program modifies the
-input. Note: "HyperBFS" corresponds to "Hypertree" in the paper and
-"HyperKCore-Efficient" corresponds to "WE k-core" in the
+paper as reported in Table 2, and outputs the numbers to a file. The
+parallel times in the paper use all hyper-threads, and our script
+prints the times using all hyper-threads as well as times using half
+of the hyper-threads.  Experiments on more than 4 threads are run
+three times, except for MIS, which is only run once since the program
+modifies the input. Note: "HyperBFS" corresponds to "Hypertree" in the
+paper and "HyperKCore-Efficient" corresponds to "WE k-core" in the
 paper. Edge-aware parallelization is used for the Orkut-group, Web,
 and LiveJournal hypergraphs due to their highly-skewed degree
 distributions. By default, the large Rand2 hypergraph is not included
@@ -104,7 +106,7 @@ in the experiments, however it will be included if the environment
 variable LARGE is defined before running the script.
 
 ```
-$ ./run_scalability | tee results.txt
+$ ./run_scalability | tee scalability_results.txt
 ```
 
 The following command runs all of algorithms on a varying number of
@@ -112,14 +114,14 @@ threads on Rand1 (Figure 2 in the paper), and outputs the numbers to a
 file:
 
 ```
-$ ./run_varying_threads | tee varying_threads.txt
+$ ./run_varying_threads | tee varying_threads_results.txt
 ```
 
 The following command runs all of algorithms on a varying number of
 hyperedges (Figure 3 in the paper), and outputs the numbers to a file:
 
 ```
-$ ./run_varying_hyperedges | tee varying_hyperedges.txt
+$ ./run_varying_hyperedges | tee varying_hyperedges_results.txt
 ```
 
 The following computes the running time of sparse, dense, and hybrid
@@ -127,7 +129,7 @@ traversals on com-Orkut and LiveJournal (Figures 4 and 5 in the
 paper), and outputs the numbers to a file:
 
 ```
-$ ./run_directions | tee directions.txt
+$ ./run_directions | tee directions_results.txt
 ```
 
 The following computes the running time using different thresholds for
@@ -135,7 +137,7 @@ direction-optimization on com-Orkut and LiveJournal (Figures 6 and 7
 in the paper), and outputs the numbers to a file:
 
 ```
-$ ./run_thresholds | tee thresholds.txt
+$ ./run_thresholds | tee thresholds_results.txt
 ```
 
 The following computes the running time on the clique-expanded graph
@@ -146,11 +148,63 @@ the datasets).
 
 ```
 $ cd ..;
-$ ./run_clique | tee clique.txt
+$ ./run_clique | tee clique_results.txt
 ```
+
+The paper compares to the MESH hypergraph processing system, which can
+be downloaded from https://github.com/mesh-umn/MESH. If the reviewer
+wishes to test the performance of MESH, please follow the instructions
+on their GitHub page.  The com-orkut hypergraph in MESH can be
+downloaded from xxx. 
+
+
+
+
+List of claims from the paper supported by the artifact
+_______
+
+* The parallel hypergraph algorithms achieve good parallel speedup
+  (Table 2 and Figure 2 of the paper).
+
+* The parallel hypergraph algorithms achieve good scalability with
+  respect to input size (Figure 3).
+
+* The hybrid traversal strategy usually improves performance over
+  using only sparse or only dense traversals (Figures 4 and 5).
+
+* The performance is similar across a wide range of thresholds in the
+  hybrid traversal strategy (Figures 6 and 7).
+
+* Using the hypergraph algorithms is faster than using the
+  corresponding graph algorithm on the clique-expanded representation
+  for BFS, CC, and SSSP, which are the only three algorithms in the
+  paper for which the graph algorithm would produce the correct result
+  on the clique-expanded representation.
+
+* Our hypergraph algorithms outperform the corresponding algorithms in
+  MESH.
+
+List of claims from the paper not supported by the artifact
+_______
+
+* The raw running times obtained by the reviewer may differ from the
+  numbers reported in the paper due to the use of a different machine
+  and/or compiler.
+
+* The performance counters in Table 3 are obtained using the
+  [perf](https://perf.wiki.kernel.org/index.php/Tutorial)
+  tool. Obtaining these counters requires root access to the machine
+  as well as modifying the code to not include the loading of the
+  dataset in the performance measurements. Not all performance
+  counters are supported by all machines. We decided not to include
+  this in the artifact evaluation due to the significant effort that
+  would be required by the reviewer to get the performance counters to
+  work properly.
+
 
 The remaining sections contain instructions to run any individual
 experiments that the reviewer may want to run.
+
 
 Running code in Ligra-H
 -------
