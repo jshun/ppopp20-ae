@@ -33,7 +33,7 @@ RedHat OS, the following instructions can be used to easily install g++ with
 Cilk Plus:
 https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/compile-software.html.
 
-Install [*numactl*](https://linux.die.net/man/8/numactl), which is
+Install [numactl](https://linux.die.net/man/8/numactl), which is
 used in the parallel experiments.
 
 To compile with g++ using Cilk Plus, define the environment variable
