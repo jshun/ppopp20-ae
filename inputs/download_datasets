@@ -1,3 +1,7 @@
 #!/bin/bash
 
 echo "Downloading datasets..."
+
+if [[ -v LARGE ]]; then
+    echo "Downloading large dataset..."
+fi

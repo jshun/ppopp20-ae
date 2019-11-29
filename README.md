@@ -26,8 +26,8 @@ Compilation is done from within the apps/hyper/ directory. Experiments
 in the paper were performed using the g++ version 7.4.0 compiler with
 support for Cilk Plus. The operating system was Ubuntu 7.4.0 and the
 machine was a 72-core machine with 2-way hyper-threading (Dell
-PowerEdge R930 with four 2.4GHz 18-core E7-8867 v4 Xeon
-processors). We use 'numactl -i all' for parallel experiments for
+PowerEdge R930 with four 2.4GHz 18-core E7-8867 v4 Xeon processors)
+with 1TB of RAM. We use 'numactl -i all' for parallel experiments for
 better performance.
 
 Any version of g++ with support for Cilk Plus on an Ubuntu OS can be
@@ -35,7 +35,9 @@ used for the artifact evaluation.  To compile with g++ using Cilk
 Plus, define the environment variable CILK. (Note: OpenMP compilation
 is also supported, but we found that Cilk Plus gives the best
 performance and thus should be used for the artifact evaluation.)
-
+Resuls will vary depending on the machine (number of cores and
+sockets, cache sizes, memory bandwidth, clock speed, etc.) used for
+experiments.
 
 The commands for compilation are as follows:
 
@@ -133,20 +135,23 @@ experiments presented in the paper.
 First, install the g++ compiler with Cilk Plus support. Python 2.7 is
 used for running the scripts.
 
-Navigate to the directory with the hypergraph applications and compiling:
+
+
+The following command downloads or generates all of the datasets used
+in the paper:
 
 ```
-$ cd ppopp20-ae/apps/hyper/
-$ make -j
-```
-
-
-The following command downloads or generates all of the datasets used in the paper:
-
-```
-$ mkdir inputs/
-$ cd inputs/
+$ cd ppopp20-ae/
+$ mkdir inputs
+$ cd inputs
 $ ./download_datasets
+$ cd ..
+```
+
+Then, navigate to the directory with the hypergraph applications:
+
+```
+$ cd apps/hyper/
 ```
 
 
