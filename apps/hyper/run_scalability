@@ -34,11 +34,17 @@ wtestfiles = [("com-orkut-wgh-ligrah","0"),("friendster-wgh-ligrah","0"),("rand1
 
 edgeawarefiles=["orkut-group-ligrah","orkut-group-wgh-ligrah","web-ligrah","web-wgh-ligrah","livejournal-ligrah","livejournal-wgh-ligrah"]
 
-processors = [1,int(threads)/2,int(threads)]
 
+processors = [1,int(threads)/2,int(threads)]
+processors = [int(threads)]
 print processors
 
 os.system("export CILK=1; make clean; make -j")
+
+if "QUICK" in os.environ:
+    print "QUICK is set; running experiments on only two datasets"
+    testfiles = [("com-orkut-ligrah","0"),("rand1-ligrah","0")]
+    wtestfiles = [("com-orkut-wgh-ligrah","0"),("rand1-wgh-ligrah","0")]
 
 for app in applications:
     for testfile in testfiles :
@@ -88,6 +94,7 @@ for app in wapplications:
 
 #include large file for testing if LARGE is defined
 if "LARGE" in os.environ:
+    print "LARGE is set; including large file in experiments"
     testfiles = [("rand2-ligrah","0")]
     wtestfiles = [("rand2-wgh-ligrah","0")]
     os.system("export CILK=1; make clean; LONG=1 make -j")

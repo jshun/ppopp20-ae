@@ -77,6 +77,9 @@ will be included if the environment variable LARGE is defined before
 running the script. The total storage required without the large
 datasets is xxx and with the large datasets is xxx.
 
+For a quick test, the user may download and run the scalability
+experiments on just two dataset (com-orkut and Rand1) by defining the
+environment variable QUICK before running the scripts.
 
 ```
 $ cd ppopp20-ae/
@@ -105,7 +108,9 @@ paper. Edge-aware parallelization is used for the Orkut-group, Web,
 and LiveJournal hypergraphs due to their highly-skewed degree
 distributions. By default, the large Rand2 hypergraph is not included
 in the experiments, however it will be included if the environment
-variable LARGE is defined before running the script.
+variable LARGE is defined before running the script. If the
+environment variable QUICK is defined, the experiments will only be
+run on com-orkut and Rand1.
 
 ```
 $ ./run_scalability | tee scalability_results.txt

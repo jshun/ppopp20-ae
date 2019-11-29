@@ -8,7 +8,7 @@ import subprocess
 
 print "Downloading datasets..."
 
-quicktestfiles = ["com-orkut-ligrah","com-orkut-wgh-ligrah"]
+quicktestfiles = ["com-orkut-ligrah","com-orkut-wgh-ligrah","rand1-ligrah","rand1-wgh-ligrah"]
 
 testfiles = ["com-orkut-ligrah","friendster-ligrah","rand1-ligrah","rand3-ligrah","orkut-group-ligrah","web-ligrah","livejournal-ligrah","com-orkut-wgh-ligrah","friendster-wgh-ligrah","rand1-wgh-ligrah","rand3-wgh-ligrah","orkut-group-wgh-ligrah","web-wgh-ligrah","livejournal-wgh-ligrah"]
 
@@ -28,7 +28,16 @@ if "QUICK" in os.environ:
          os.system("wget " + bucket + testfile)
       else:
          print testfile + " already exists"
-         
+
+elif "SIZES" in os.environ:
+   print "Downloading random hypergraphs of varying sizes..."
+   for testfile in sizefiles:
+      if not os.path.isfile(testfile):
+         print "Downloading " + testfile + "..."
+         os.system("wget " + bucket + testfile)
+      else:
+         print testfile + " already exists"
+   
 elif "LARGE" not in os.environ:
    print "Downloading all datasets except for the large ones..."
    for testfile in testfiles+sizefiles:
