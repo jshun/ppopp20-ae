@@ -21,7 +21,7 @@ threads = shellGetOutput("nproc --all")
 print "Number of threads = " + threads
 
 
-dataDir = "inputs/"
+dataDir = "../../inputs/"
 
 applications = ["HyperBFS","HyperBC","HyperCC","HyperPageRank","HyperKCore-Efficient","HyperKCore"]
 mis = ["HyperMIS"]
