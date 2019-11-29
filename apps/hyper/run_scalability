@@ -36,7 +36,7 @@ edgeawarefiles=["orkut-group-ligrah","orkut-group-wgh-ligrah","web-ligrah","web-
 
 
 processors = [1,int(threads)/2,int(threads)]
-processors = [int(threads)]
+
 print processors
 
 os.system("export CILK=1; make clean; make -j")
