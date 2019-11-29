@@ -63,7 +63,11 @@ used for running the scripts.
 
 
 The following command downloads or generates all of the datasets used
-in the paper:
+in the paper. By default, the large Rand2 hypergraph and the
+clique-expanded graph for Friendster are not downloaded, however they
+will be included if the environment variable LARGE is defined before
+running the script.
+
 
 ```
 $ cd ppopp20-ae/
@@ -88,7 +92,9 @@ input. Note: "HyperBFS" corresponds to "Hypertree" in the paper and
 "HyperKCore-Efficient" corresponds to "WE k-core" in the
 paper. Edge-aware parallelization is used for the Orkut-group, Web,
 and LiveJournal hypergraphs due to their highly-skewed degree
-distributions.
+distributions. By default, the large Rand2 hypergraph is not included
+in the experiments, however it will be included if the environment
+variable LARGE is defined before running the script.
 
 ```
 $ ./run_scalability | tee results.txt
@@ -125,12 +131,15 @@ in the paper), and outputs the numbers to a file:
 $ ./run_thresholds | tee thresholds.txt
 ```
 
-The following computes the running time on the clique-expanded graph for Friendster using
-breadth-first search, connected components, and SSSP in Ligra.
+The following computes the running time on the clique-expanded graph
+for Friendster using breadth-first search, connected components, and
+SSSP in Ligra. This script assumes the clique-expanded graph for
+Friendster is downloaded (see instructions above for downloading the
+datasets).
 
 ```
 $ cd ..;
-$ ./run_clique | tee thresholds.txt
+$ ./run_clique | tee clique.txt
 ```
 
 The remaining sections contain instructions to run any additional
@@ -148,6 +157,14 @@ performance. For example:
 $ ./HyperBFS -s ../inputs/test
 $ ./HyperSSSP -s ../inputs/test-wgh
 ``` 
+
+On multi-socket machines, adding the command "numactl -i all " when
+running the program may improve performance for large inputs. For
+example:
+
+```
+$ numactl -i all ./HyperBFS -s <input file>
+```
 
 For traversal algorithms, one can also pass the "-r" flag followed by
 an integer to indicate the source vertex.  Random hypergraphs can be
@@ -210,31 +227,6 @@ first line of the file should store the string
 after all of the edge targets in the .vadj and .hadj files.
 
 
-Running code in Ligra
--------
-The applications take the input graph as input as well as an optional
-flag "-s" to indicate a symmetric graph.  Symmetric graphs should be
-called with the "-s" flag for better performance. For example:
-
-```
-$ ./BFS -s ../inputs/rMatGraph_J_5_100
-$ ./BellmanFord -s ../inputs/rMatGraph_WJ_5_100
-``` 
-
-For BFS, BC and BellmanFord, one can also pass the "-r" flag followed
-by an integer to indicate the source vertex.  rMat graphs along with
-other graphs can be generated with the graph generators in the utils/
-directory.  By default, the applications are run four times, with
-times reported for the last three runs. This can be changed by passing
-the flag "-rounds" followed by an integer indicating the number of
-timed runs.
-
-On NUMA machines, adding the command "numactl -i all " when running
-the program may improve performance for large graphs. For example:
-
-```
-$ numactl -i all ./BFS -s <input file>
-```
 
 Utilities
 ---------
