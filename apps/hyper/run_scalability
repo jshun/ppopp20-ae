@@ -35,7 +35,7 @@ wtestfiles = [("com-orkut-wgh-ligrah","0"),("com-friendster-wgh-ligrah","0"),("r
 
 #wtestfiles = [("/ssd1/jshun/rand-1B-1B-10-wgh","0")]
 
-processors = [1,int(threads)]
+processors = [1,int(threads)/2,int(threads)]
 
 print processors
 
@@ -45,10 +45,10 @@ for app in applications:
   for testfile in testfiles :
     for p in processors :
       if p <= 4:
-        ss = "export CILK_NWORKERS="+`p`+"; ./"+app+' -s -b -rounds 1 -maxiters 1 -r '+testfile[1]+' '+dataDir+testfile[0]
+        ss = "export CILK_NWORKERS="+`p`+"; ./"+app+' -s -rounds 1 -maxiters 1 -r '+testfile[1]+' '+dataDir+testfile[0]
       else:
-        ss = "export CILK_NWORKERS="+`p`+"; numactl -i all ./" + app + ' -s -b -rounds 3 -maxiters 1 -r '+testfile[1]+ ' ' + dataDir + testfile[0]
-      print app+" "+`p` + " " + testfile[0] 
+        ss = "export CILK_NWORKERS="+`p`+"; numactl -i all ./" + app + ' -s -rounds 3 -maxiters 1 -r '+testfile[1]+ ' ' + dataDir + testfile[0]
+      print app+" "+`p` + " thread(s) on " + testfile[0] 
       print shellGetOutput(ss)
       sys.stdout.flush()
 
@@ -56,10 +56,10 @@ for app in mis:
   for testfile in testfiles :
     for p in processors :
       if p <= 4:
-        ss = "export CILK_NWORKERS="+`p`+"; ./"+app+' -s -b -rounds 0 -maxiters 1 -r '+testfile[1]+' '+dataDir+testfile[0]
+        ss = "export CILK_NWORKERS="+`p`+"; ./"+app+' -s -rounds 0 -maxiters 1 -r '+testfile[1]+' '+dataDir+testfile[0]
       else:
-        ss = "export CILK_NWORKERS="+`p`+"; numactl -i all ./" + app + ' -s -b -rounds 0 -maxiters 1 -r '+testfile[1]+ ' ' + dataDir + testfile[0]
-      print app+" "+`p` + " " + testfile[0] 
+        ss = "export CILK_NWORKERS="+`p`+"; numactl -i all ./" + app + ' -s -rounds 0 -maxiters 1 -r '+testfile[1]+ ' ' + dataDir + testfile[0]
+      print app+" "+`p` + " threads(s) on " + testfile[0] 
       print shellGetOutput(ss)
       sys.stdout.flush()
 
@@ -67,10 +67,10 @@ for app in wapplications:
   for testfile in wtestfiles :
     for p in processors :
       if p <= 4:
-        ss = "export CILK_NWORKERS="+`p`+"; ./"+app+' -s -b -rounds 1 -r '+testfile[1]+' '+dataDir+testfile[0]
+        ss = "export CILK_NWORKERS="+`p`+"; ./"+app+' -s -rounds 1 -r '+testfile[1]+' '+dataDir+testfile[0]
       else:
-        ss = "export CILK_NWORKERS="+`p`+"; numactl -i all ./" + app + ' -s -b -rounds 3 -r '+testfile[1]+' ' + dataDir + testfile[0]
-      print app+" "+`p` + " " + testfile[0]
+        ss = "export CILK_NWORKERS="+`p`+"; numactl -i all ./" + app + ' -s -rounds 3 -r '+testfile[1]+' ' + dataDir + testfile[0]
+      print app+" "+`p` + " thread(s) on " + testfile[0]
       print shellGetOutput(ss)
       sys.stdout.flush()
 
