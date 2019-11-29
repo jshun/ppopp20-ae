@@ -130,7 +130,8 @@ Running all experiments in the paper
 This section describes all of the commands needed to run the
 experiments presented in the paper.
 
-First, install the g++ compiler with Cilk Plus support.
+First, install the g++ compiler with Cilk Plus support. Python 2.7 is
+used for running the scripts.
 
 Navigate to the directory with the hypergraph applications and compiling:
 
