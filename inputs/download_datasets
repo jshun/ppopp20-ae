@@ -1,7 +1,48 @@
-#!/bin/bash
+#!/usr/bin/python
 
-echo "Downloading datasets..."
+import os
+import sys
+import signal
+import time
+import subprocess
 
-if [[ -v LARGE ]]; then
-    echo "Downloading large dataset..."
-fi
+print "Downloading datasets..."
+
+quicktestfiles = ["com-orkut-ligrah","com-orkut-wgh-ligrah"]
+
+testfiles = ["com-orkut-ligrah","friendster-ligrah","rand1-ligrah","rand3-ligrah","orkut-group-ligrah","web-ligrah","livejournal-ligrah","com-orkut-wgh-ligrah","friendster-wgh-ligrah","rand1-wgh-ligrah","rand3-wgh-ligrah","orkut-group-wgh-ligrah","web-wgh-ligrah","livejournal-wgh-ligrah"]
+
+largetestfiles = ["rand2-ligrah","rand2-wgh-ligrah"]
+
+cliquefiles = ["friendster-clique","friendster-wgh-clique"]
+
+sizefiles = ["rand-10M-10M-10-ligrah","rand-10M-20M-10-ligrah","rand-10M-30M-10-ligrah","rand-10M-40M-10-ligrah","rand-10M-50M-10-ligrah","rand-10M-60M-10-ligrah","rand-10M-70M-10-ligrah","rand-10M-80M-10-ligrah","rand-10M-90M-10-ligrah","rand-10M-100M-10-ligrah","rand-10M-10M-10-wgh-ligrah","rand-10M-20M-10-wgh-ligrah","rand-10M-30M-10-wgh-ligrah","rand-10M-40M-10-wgh-ligrah","rand-10M-50M-10-wgh-ligrah","rand-10M-60M-10-wgh-ligrah","rand-10M-70M-10-wgh-ligrah","rand-10M-80M-10-wgh-ligrah","rand-10M-90M-10-wgh-ligrah","rand-10M-100M-10-wgh-ligrah"]
+
+bucket="https://ppopp20-ae.s3.amazonaws.com/"
+
+if "QUICK" in os.environ:
+   print "Downloading datasets for quick testing..."
+   for testfile in quicktestfiles:
+      if not os.path.isfile(testfile):      
+         print "Downloading " + testfile + "..."
+         os.system("wget " + bucket + testfile)
+      else:
+         print testfile + " already exists"
+         
+elif "LARGE" not in os.environ:
+   print "Downloading all datasets except for the large ones..."
+   for testfile in testfiles+sizefiles:
+      if not os.path.isfile(testfile):
+         print "Downloading " + testfile + "..."
+         os.system("wget " + bucket + testfile)
+      else:
+         print testfile + " already exists"
+
+else: 
+   print "Downloading large datasets..."
+   for testfile in largetestfiles+cliquefiles:
+      if not os.path.isfile(testfile):
+         print "Downloading " + testfile + "..."
+         os.system("wget " + bucket + testfile)
+      else:
+         print testfile + " already exists"
