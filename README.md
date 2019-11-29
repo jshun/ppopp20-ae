@@ -125,7 +125,15 @@ in the paper), and outputs the numbers to a file:
 $ ./run_thresholds | tee thresholds.txt
 ```
 
-The following sections contains instructions to run any additional
+The following computes the running time on the clique-expanded graph for Friendster using
+breadth-first search, connected components, and SSSP in Ligra.
+
+```
+$ cd ..;
+$ ./run_clique | tee thresholds.txt
+```
+
+The remaining sections contain instructions to run any additional
 experiments that the reviewer may want to run.
 
 Running code in Ligra-H

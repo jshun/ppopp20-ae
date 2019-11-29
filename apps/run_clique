@@ -1,0 +1,61 @@
+#!/usr/bin/python
+
+import os
+import sys
+import signal
+import time
+import subprocess
+
+def shellGetOutput(str) :
+    process = subprocess.Popen(str,shell=True,stdout=subprocess.PIPE,
+                               stderr=subprocess.PIPE)
+    output, err = process.communicate()
+
+    return output
+
+print "Running clique experiments..."
+
+
+threads = shellGetOutput("nproc --all")
+
+print "Number of threads on machine = " + threads
+
+
+dataDir = "../inputs/"
+
+applications = ["BFS","Components"]
+wapplications = ["BellmanFord"]
+
+testfiles = [("friendster-clique","0")]
+
+wtestfiles = [("friendster-wgh-clique","0")]
+
+processors = [int(threads)]
+
+print processors
+
+os.system("export CILK=1; make clean; make -j")
+
+for app in applications:
+    for testfile in testfiles :
+        for p in processors :
+            if p <= 4:
+                ss = "export CILK_NWORKERS="+`p`+"; ./"+app+' -s -rounds 1 -r '+testfile[1]+' '+dataDir+testfile[0]
+            else:
+                ss = "export CILK_NWORKERS="+`p`+"; numactl -i all ./" + app + ' -s -rounds 3 -r '+testfile[1]+ ' ' + dataDir + testfile[0]
+            print app+" "+`p` + " thread(s) on " + testfile[0] 
+            print shellGetOutput(ss)
+            sys.stdout.flush()
+        
+for app in wapplications:
+    for testfile in wtestfiles :
+        for p in processors :
+            if p <= 4:
+                ss = "export CILK_NWORKERS="+`p`+"; ./"+app+' -s -rounds 1 -r '+testfile[1]+' '+dataDir+testfile[0]
+            else:
+                ss = "export CILK_NWORKERS="+`p`+"; numactl -i all ./" + app + ' -s -rounds 3 -r '+testfile[1]+' ' + dataDir + testfile[0]
+            print app+" "+`p` + " thread(s) on " + testfile[0]
+            print shellGetOutput(ss)
+            sys.stdout.flush()
+
+

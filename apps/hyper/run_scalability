@@ -80,7 +80,7 @@ for app in wapplications:
             if p <= 4:
                 ss = "export CILK_NWORKERS="+`p`+"; ./"+app+edgeaware+' -s -rounds 1 -r '+testfile[1]+' '+dataDir+testfile[0]
             else:
-                ss = "export CILK_NWORKERS="+`p`+"; numactl -i all ./" + app + ' -s -rounds 3 -r '+testfile[1]+' ' + dataDir + testfile[0]
+                ss = "export CILK_NWORKERS="+`p`+"; numactl -i all ./" + app+edgeaware + ' -s -rounds 3 -r '+testfile[1]+' ' + dataDir + testfile[0]
             print app+edgeaware+" "+`p` + " thread(s) on " + testfile[0]
             print shellGetOutput(ss)
             sys.stdout.flush()
