@@ -28,10 +28,13 @@ with 1TB of RAM. We use 'numactl -i all' for parallel experiments for
 better performance.
 
 First, install a version of g++ with support for Cilk Plus (g++
-version 5.4.0 or later) on a Linux machine.  If using AWS EC2 with
-RedHat OS the following instructions can be used to install g++ with
+version 5.4.0 or later) on a Linux machine.  If using an AWS EC2 instance with
+RedHat OS, the following instructions can be used to easily install g++ with
 Cilk Plus:
 https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/compile-software.html.
+
+Install [*numactl*](https://linux.die.net/man/8/numactl), which is
+used in the parallel experiments.
 
 To compile with g++ using Cilk Plus, define the environment variable
 CILK. (Note: OpenMP compilation is also supported, but we found that
@@ -53,7 +56,9 @@ $ make clean #removes all executables
 $ make cleansrc #removes all executables and linked files from the ligra/ directory
 ```
 
-Python 2.7 is used for running the scripts, so make sure it is installed.
+Python 2.7 is used for running the scripts, so make sure it is
+installed
+(https://docs.datastax.com/en/install/6.7/install/installPython27RHEL.html).
 
 
 Step-by-Step Instructions
