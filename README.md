@@ -13,29 +13,34 @@ to do
 Organization
 --------
 
-The code for Ligra-H is located in the ligra/ directory.  The code for
-the hypergraph applications is in the apps/hyper/ directory, which is
-where compilation should be performed.  Graph and hypergraph utilities
-are provided in the utils/ directory.
+The framework code for Ligra-H is located in the ligra/ directory.
+The code for the hypergraph algorithms is in the apps/hyper/
+directory, which is where compilation should be performed for the
+artifact evaluation.  Hypergraph generators and converters are
+provided in the utils/ directory.
 
 Compilation
 --------
 
 Compilation is done from within the apps/hyper/ directory. Experiments
-in the paper were done using the g++ version 7.4.0 compiler with
-support for Cilk Plus on Ubuntu 7.4.0. Any version of g++ with support
-for Cilk Plus on an Ubuntu OS can be used for the artifact evaluation.
+in the paper were performed using the g++ version 7.4.0 compiler with
+support for Cilk Plus. The operating system was Ubuntu 7.4.0 and the
+machine was a 72-core machine with 2-way hyper-threading (Dell
+PowerEdge R930 with four 2.4GHz 18-core E7-8867 v4 Xeon
+processors). We use 'numactl -i all' for parallel experiments for
+better performance.
 
-To compile with g++ using Cilk Plus, define the environment variable
-CILK. To compile with OpenMP, define the environment variable OPENMP
-and make sure CILK is not defined.  Using Cilk Plus gives the best
-parallel performance in our experience.  To compile with g++ with no
-parallel support, make sure CILK and OPENMP are not defined.
+Any version of g++ with support for Cilk Plus on an Ubuntu OS can be
+used for the artifact evaluation.  To compile with g++ using Cilk
+Plus, define the environment variable CILK. (Note: OpenMP compilation
+is also supported, but we found that Cilk Plus gives the best
+performance and thus should be used for the artifact evaluation.)
 
-After the appropriate environment variables are set, to compile,
-simply run
+
+The commands for compilation are as follows:
 
 ```
+$ export CILK=1 #sets environment variable
 $ make -j  #compiles with all threads
 ```
 
