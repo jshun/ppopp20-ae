@@ -1,0 +1,85 @@
+#!/usr/bin/python
+
+import os
+import sys
+import signal
+import time
+import subprocess
+
+def shellGetOutput(str) :
+    process = subprocess.Popen(str,shell=True,stdout=subprocess.PIPE,
+                               stderr=subprocess.PIPE)
+    output, err = process.communicate()
+
+    return output
+
+print "Running scalability experiments..."
+
+
+threads = shellGetOutput("nproc --all")
+
+print "Number of threads on machine = " + threads
+
+
+dataDir = "../../inputs/"
+
+applications = ["HyperBFS","HyperBFS-Sparse","HyperBFS-Dense","HyperBC","HyperBC-Sparse","HyperBC-Dense","HyperCC","HyperCC-Sparse","HyperCC-Dense","HyperPageRank","HyperPageRank-Sparse","HyperPageRank-Dense","HyperKCore-Efficient","HyperKCore-Efficient-Sparse","HyperKCore-Efficient-Dense"]
+mis = ["HyperMIS","HyperMIS-Sparse","HyperMIS-Dense"]
+wapplications = ["HyperSSSP","HyperSSSP-Sparse","HyperSSSP-Dense"]
+
+testfiles = [("com-orkut-ligrah","0"),("livejournal-ligrah","0")]
+
+wtestfiles = [("com-orkut-wgh-ligrah","0"),("livejournal-wgh-ligrah","0")]
+
+edgeawarefiles=["livejournal-ligrah","livejournal-wgh-ligrah"]
+
+processors = [int(threads)]
+
+print processors
+
+os.system("export CILK=1; make clean; make -j")
+
+for testfile in testfiles :
+    for app in applications:
+        if testfile[0] in edgeawarefiles:
+            edgeaware = "-EdgeAware"
+        else:
+            edgeaware = ""
+        for p in processors :
+            if p <= 4:
+                ss = "export CILK_NWORKERS="+`p`+"; ./"+app+edgeaware+' -s -rounds 1 -maxiters 1 -r '+testfile[1]+' '+dataDir+testfile[0]
+            else:
+                ss = "export CILK_NWORKERS="+`p`+"; numactl -i all ./" + app + edgeaware+ ' -s -rounds 3 -maxiters 1 -r '+testfile[1]+ ' ' + dataDir + testfile[0]
+            print app+edgeaware+" "+`p` + " thread(s) on " + testfile[0] 
+            print shellGetOutput(ss)
+            sys.stdout.flush()
+
+for testfile in testfiles :
+    for app in mis:
+        if testfile[0] in edgeawarefiles:
+            edgeaware = "-EdgeAware"
+        else:
+            edgeaware = ""
+        for p in processors :
+            if p <= 4:
+                ss = "export CILK_NWORKERS="+`p`+"; ./"+app+edgeaware+' -s -rounds 0 -maxiters 1 -r '+testfile[1]+' '+dataDir+testfile[0]
+            else:
+                ss = "export CILK_NWORKERS="+`p`+"; numactl -i all ./" + app + edgeaware+' -s -rounds 0 -maxiters 1 -r '+testfile[1]+ ' ' + dataDir + testfile[0]
+            print app+edgeaware+" "+`p` + " threads(s) on " + testfile[0] 
+            print shellGetOutput(ss)
+            sys.stdout.flush()
+
+for testfile in wtestfiles :
+    for app in wapplications:
+        if testfile[0] in edgeawarefiles:
+            edgeaware = "-EdgeAware"
+        else:
+            edgeaware = ""
+        for p in processors :
+            if p <= 4:
+                ss = "export CILK_NWORKERS="+`p`+"; ./"+app+edgeaware+' -s -rounds 1 -r '+testfile[1]+' '+dataDir+testfile[0]
+            else:
+                ss = "export CILK_NWORKERS="+`p`+"; numactl -i all ./" + app + edgeaware+' -s -rounds 3 -r '+testfile[1]+' ' + dataDir + testfile[0]
+            print app+edgeaware+" "+`p` + " thread(s) on " + testfile[0]
+            print shellGetOutput(ss)
+            sys.stdout.flush()

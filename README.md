@@ -7,9 +7,9 @@ to do
 * script for input graph generators
 * script to download datasets on Amazon S3
 * sparse vs. dense experiments
-* threshold experiments
-* varying size experiments
-* performance counters?
+* generate missing varying size file
+* add weights to rand2
+
 * script for converting to clique and running in Ligra
 
 Organization
@@ -86,7 +86,14 @@ $ cd apps/hyper/
 
 
 The following command runs all of the scalability experiments in the
-paper as reported in Table 2, and outputs the numbers to a file:
+paper as reported in Table 2, and outputs the numbers to a
+file. Experiments on more than 4 threads are run three times, except
+for MIS, which is only run once since the program modifies the
+input. Note: "HyperBFS" corresponds to "Hypertree" in the paper and
+"HyperKCore-Efficient" corresponds to "WE k-core" in the
+paper. Edge-aware parallelization is used for the Orkut-group, Web,
+and LiveJournal hypergraphs due to their highly-skewed degree
+distributions.
 
 ```
 $ ./run_scalability | tee results.txt
