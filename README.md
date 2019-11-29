@@ -7,6 +7,8 @@ to do
 * script for input graph generators
 * script to download datasets on Amazon S3
 * sparse vs. dense experiments
+* threshold experiments
+* varying size experiments
 * performance counters?
 * script for converting to clique and running in Ligra
 
@@ -52,78 +54,6 @@ $ make clean #removes all executables
 $ make cleansrc #removes all executables and linked files from the ligra/ directory
 ```
 
-Running code in Ligra-H
--------
-The hypergraph applications are located in the apps/hyper/
-directory. The applications take the input hypergraph as input as well
-as an optional flag "-s" to indicate a symmetric hypergraph.
-Symmetric hypergraphs should be called with the "-s" flag for better
-performance. For example:
-
-```
-$ ./HyperBFS -s ../inputs/test
-$ ./HyperSSSP -s ../inputs/test-wgh
-``` 
-
-For traversal algorithms, one can also pass the "-r" flag followed by
-an integer to indicate the source vertex.  Random hypergraphs can be
-generated with the hypergraph generator in the utils/ directory.
-
-
-
-Input Format for Ligra-H applications
------------
-The input can be in either adjacency hypergraph format or binary format, similar to graphs.
-
-1) The adjacency hypergraph format starts with a sequence of offsets
- one for each vertex, followed by a sequence of incident hyperedges
- (the vertex is an incoming member of the hyperedge) ordered by
- vertex, followed by a sequence of offsets one for each hyperedge, and
- finally a sequence of incident vertices (the vertex is an outgoing
- member of the hyperedge) ordered by hyperedge.  All vertices,
- hyperedges, and offsets are 0 based and represented in decimal. For a
- graph with *nv* vertices, *mv* incident hyperedges for the vertices,
- *nh* hyperedges, and *mh* incident vertices for the hyperedges, the
- specific format is as follows:
-
-AdjacencyHypergraph  
-&lt;nv>
-&lt;mv>
-&lt;nh>
-&lt;mh>
-&lt;ov0>  
-&lt;ov1>  
-...  
-&lt;ov(nv-1)>  
-&lt;ev0>  
-&lt;ev1>  
-...  
-&lt;ev(mv-1)>  
-&lt;oh0>  
-&lt;oh1>  
-...  
-&lt;oh(nh-1)>  
-&lt;eh0>  
-&lt;eh1>  
-...  
-&lt;eh(mh-1)>  
-
-This file is represented as plain text.
-
-2) In binary format. This requires five files NAME.config, NAME.vadj,
-NAME.vidx, NAME.hadj, NAME.hidx, where NAME is chosen by the user. The
-.config file stores *nv*, *mv*, *nh*, and *mh* in text format. The
-.vidx and .hidx files store in binary the offsets for the vertices and
-hyperedges (the &lt;ov>'s and &lt;oh>'s above). The .vadj and .hadj
-files stores in binary the neighbors (the &lt;ev>'s and &lt;eh>'s
-above).
-
-Weighted hypergraphs: For format (1), the weights are listed as
-another sequence following the sequence of neighbors for vertices or
-hyperedges file (i.e., after &lt;ev(mv-1)> and &lt;eh(mh-1)>), and the
-first line of the file should store the string
-"WeightedAdjacencyHypergraph". For format (2), the weights are stored
-after all of the edge targets in the .vadj and .hadj files.
 
 
 Running all experiments in the paper
@@ -192,6 +122,82 @@ in the paper):
 $ ./run_thresholds | tee thresholds.txt
 ```
 
+The following sections contains instructions to run any additional
+experiments that the reviewer may want to run.
+
+Running code in Ligra-H
+-------
+The hypergraph applications are located in the apps/hyper/
+directory. The applications take the input hypergraph as input as well
+as an optional flag "-s" to indicate a symmetric hypergraph.
+Symmetric hypergraphs should be called with the "-s" flag for better
+performance. For example:
+
+```
+$ ./HyperBFS -s ../inputs/test
+$ ./HyperSSSP -s ../inputs/test-wgh
+``` 
+
+For traversal algorithms, one can also pass the "-r" flag followed by
+an integer to indicate the source vertex.  Random hypergraphs can be
+generated with the hypergraph generator in the utils/ directory.
+
+
+
+Input Format for Ligra-H applications
+-----------
+The input can be in either adjacency hypergraph format or binary format.
+
+1) The adjacency hypergraph format starts with a sequence of offsets
+ one for each vertex, followed by a sequence of incident hyperedges
+ (the vertex is an incoming member of the hyperedge) ordered by
+ vertex, followed by a sequence of offsets one for each hyperedge, and
+ finally a sequence of incident vertices (the vertex is an outgoing
+ member of the hyperedge) ordered by hyperedge.  All vertices,
+ hyperedges, and offsets are 0 based and represented in decimal. For a
+ graph with *nv* vertices, *mv* incident hyperedges for the vertices,
+ *nh* hyperedges, and *mh* incident vertices for the hyperedges, the
+ specific format is as follows:
+
+AdjacencyHypergraph  
+&lt;nv>
+&lt;mv>
+&lt;nh>
+&lt;mh>
+&lt;ov0>  
+&lt;ov1>  
+...  
+&lt;ov(nv-1)>  
+&lt;ev0>  
+&lt;ev1>  
+...  
+&lt;ev(mv-1)>  
+&lt;oh0>  
+&lt;oh1>  
+...  
+&lt;oh(nh-1)>  
+&lt;eh0>  
+&lt;eh1>  
+...  
+&lt;eh(mh-1)>  
+
+This file is represented as plain text.
+
+2) In binary format. This requires five files NAME.config, NAME.vadj,
+NAME.vidx, NAME.hadj, NAME.hidx, where NAME is chosen by the user. The
+.config file stores *nv*, *mv*, *nh*, and *mh* in text format. The
+.vidx and .hidx files store in binary the offsets for the vertices and
+hyperedges (the &lt;ov>'s and &lt;oh>'s above). The .vadj and .hadj
+files stores in binary the neighbors (the &lt;ev>'s and &lt;eh>'s
+above).
+
+Weighted hypergraphs: For format (1), the weights are listed as
+another sequence following the sequence of neighbors for vertices or
+hyperedges file (i.e., after &lt;ev(mv-1)> and &lt;eh(mh-1)>), and the
+first line of the file should store the string
+"WeightedAdjacencyHypergraph". For format (2), the weights are stored
+after all of the edge targets in the .vadj and .hadj files.
+
 
 Running code in Ligra
 -------
@@ -218,62 +224,6 @@ the program may improve performance for large graphs. For example:
 ```
 $ numactl -i all ./BFS -s <input file>
 ```
-
-
-
-
-
-Input Format for Ligra applications
------------
-The input format of unweighted graphs should be in one of two
-formats (the Ligra+ encoder currently only supports the first format).
-
-1) The adjacency graph format from the Problem Based Benchmark Suite
- (http://www.cs.cmu.edu/~pbbs/benchmarks/graphIO.html). The adjacency
- graph format starts with a sequence of offsets one for each vertex,
- followed by a sequence of directed edges ordered by their source
- vertex. The offset for a vertex i refers to the location of the start
- of a contiguous block of out edges for vertex i in the sequence of
- edges. The block continues until the offset of the next vertex, or
- the end if i is the last vertex. All vertices and offsets are 0 based
- and represented in decimal. The specific format is as follows:
-
-AdjacencyGraph  
-&lt;n>  
-&lt;m>  
-&lt;o0>  
-&lt;o1>  
-...  
-&lt;o(n-1)>  
-&lt;e0>  
-&lt;e1>  
-...  
-&lt;e(m-1)>  
-
-This file is represented as plain text.
-
-2) In binary format. This requires three files NAME.config, NAME.adj,
-and NAME.idx, where NAME is chosen by the user. The .config file
-stores the number of vertices in the graph in text format. The .idx
-file stores in binary the offsets for the vertices in the CSR format
-(the &lt;o>'s above). The .adj file stores in binary the edge targets in
-the CSR format (the &lt;e>'s above).
-
-Weighted graphs: For format (1), the weights are listed at the end of
-the file (after &lt;e(m-1)>), and the first line of the file should
-store the string "WeightedAdjacencyGraph". For format (2), the weights
-are stored after all of the edge targets in the .adj file.
-
-By default, format (1) is used. To run an input with format (2), pass
-the "-b" flag as a command line argument.
-
-By default the offsets are stored as 32-bit integers, and to represent
-them as 64-bit integers, compile with the variable LONG defined. By
-default the vertex IDs (edge values) are stored as 32-bit integers,
-and to represent them as 64-bit integers, compile with the variable
-EDGELONG defined.
-
-
 
 Utilities
 ---------
@@ -324,21 +274,9 @@ and .hidx.
 
 Examples:
 ```
-$ ./communityToHyperAdj SNAPfile LigraFile
-$ ./KONECTtoHyperAdj KONECTfile Ligrafile
-$ ./adjHypergraphAddWeights unweightedLigraFile weightedLigraFile
+$ ./communityToHyperAdj SNAPfile LigraHFile
+$ ./KONECTtoHyperAdj KONECTfile LigraHfile
+$ ./adjHypergraphAddWeights unweightedLigraHFile weightedLigraHFile
 $ ./hyperAdjToBinary test
 $ ./hyperAdjToBinary -w test-wgh
 ```
-
-
-Hypergraph Applications
----------
-Implementation files are provided in the apps/ directory:
-**HyperBFS.C** (hypertree), **HyperBPath.C** (hyperpaths),
-**HyperBC.C** (betweenness centrality), **HyperCC.C** (connected
-components), **HyperSSSP.C** (shortest paths), **HyperPageRank.C**
-(PageRank), **HyperMIS.C** (maximal independent set), **HyperKCore.C**
-(work-inefficient K-core decomposition), and
-**HyperKCore-Efficient.C** (work-efficient K-core decomposition).
-
