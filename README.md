@@ -3,13 +3,8 @@ Practical Parallel Hypergraph Algorithms (PPoPP 2020 Artifact Evaluation)
 
 to do
 --------
-* script for scalability experiments
-* script for input graph generators
-* script to download datasets on Amazon S3
-* sparse vs. dense experiments
-* generate missing varying size file
-* add weights to rand2
 
+* script to download datasets on Amazon S3
 * script for converting to clique and running in Ligra
 
 Organization

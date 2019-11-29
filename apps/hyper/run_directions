@@ -37,7 +37,7 @@ processors = [int(threads)]
 
 print processors
 
-os.system("export CILK=1; make clean; make -j")
+os.system("export CILK=1; make clean; make all direction -j")
 
 for testfile in testfiles :
     for app in applications:
