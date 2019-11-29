@@ -161,7 +161,7 @@ downloaded from xxx.
 
 
 List of claims from the paper supported by the artifact
-_______
+--------
 
 * The parallel hypergraph algorithms achieve good parallel speedup
   (Table 2 and Figure 2 of the paper).
@@ -185,7 +185,7 @@ _______
   MESH.
 
 List of claims from the paper not supported by the artifact
-_______
+--------
 
 * The raw running times obtained by the reviewer may differ from the
   numbers reported in the paper due to the use of a different machine
