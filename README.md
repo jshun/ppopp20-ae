@@ -79,12 +79,13 @@ datasets is xxx and with the large datasets is xxx.
 
 For a quick test, the user may download and run the scalability
 experiments on just two dataset (com-orkut and Rand1) by defining the
-environment variable QUICK before running the scripts.
+environment variable QUICK before running the scripts. (The download
+script will only download the two datasets if QUICK is defined, and
+will need to be rerun without QUICK defined if the user later wants to
+download other datasets.)
 
 ```
-$ cd ppopp20-ae/
-$ mkdir inputs
-$ cd inputs
+$ cd ppopp20-ae/inputs/
 $ ./download_datasets
 $ cd ..
 ```
@@ -159,7 +160,7 @@ $ ./run_clique | tee clique_results.txt
 ```
 
 The paper compares to the MESH hypergraph processing system, which can
-be downloaded from https://github.com/mesh-umn/MESH. If the reviewer
+be downloaded from https://github.com/mesh-umn/MESH. If the user
 wishes to test the performance of MESH, please follow the instructions
 on their GitHub page.  The com-orkut hypergraph in MESH format can be
 downloaded from https://ppopp20-ae.s3.amazonaws.com/com-orkut-MESH. 
@@ -194,7 +195,7 @@ List of claims from the paper supported by the artifact
 List of claims from the paper not supported by the artifact
 --------
 
-* The raw running times obtained by the reviewer may differ from the
+* The raw running times obtained by the user may differ from the
   numbers reported in the paper due to the use of a different machine
   and/or compiler.
 
@@ -205,12 +206,12 @@ List of claims from the paper not supported by the artifact
   dataset in the performance measurements. Not all performance
   counters are supported by all machines. We decided not to include
   this in the artifact evaluation due to the significant effort that
-  would be required by the reviewer to get the performance counters to
+  would be required by the user to get the performance counters to
   work properly.
 
 
 The remaining sections contain instructions to run any individual
-experiments that the reviewer may want to run.
+experiments that the user may want to run.
 
 
 Running code in Ligra-H
