@@ -65,8 +65,8 @@ $ cd ppopp20-ae/
 $ ./runall
 ```
 
-The following script will skip the scalability tests for most of the
-inputs, and will finish in several hours.
+The following script will skip the scalability tests for all of the
+inputs except com-orkut, and will finish in several hours.
 
 ```
 $ cd ppopp20-ae/
@@ -124,7 +124,7 @@ LiveJournal hypergraphs due to their highly-skewed degree
 distributions. By default, the large Rand2 hypergraph is not included
 in the experiments, however it will be included if "LARGE" is passed
 as an argument to the script. If "QUICK" is passed as an argument to
-the script, the experiments will only be run on com-orkut and Rand1.
+the script, the experiments will only be run on com-orkut.
 
 Note: "HyperBFS" corresponds to "Hypertree" in the paper and
 "HyperKCore-Efficient" corresponds to "WE k-core" in the paper.
@@ -136,7 +136,7 @@ $ ./run_scalability | tee scalability_results.txt #default: runs experiments on 
 
 Here are other ways to run the run_scalability script:
 ```
-$ ./run_scalability QUICK | tee scalability_results.txt #runs experiments on only com-orkut and Rand1
+$ ./run_scalability QUICK | tee scalability_results.txt #runs experiments on only com-orkut
 $ ./run_scalability LARGE | tee scalability_results.txt #runs experiments on all datasets; this will take at least several days to run
 ```
 
