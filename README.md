@@ -114,10 +114,9 @@ $ cd apps/hyper/
 The command below runs all of the scalability experiments in the paper
 as reported in Table 2, and outputs the numbers to a file. The
 parallel times in the paper use all hyper-threads, and our script
-prints the times using all hyper-threads as well as times using half
-of the hyper-threads.  Experiments on more than 4 threads are run
-three times, except for MIS, which is only run once since the program
-modifies the input.
+prints the times using all hyper-threads.  Experiments on more than 4
+threads are run three times, except for MIS, which is only run once
+since the program modifies the input.
 
 Edge-aware parallelization is used for the Orkut-group, Web, and
 LiveJournal hypergraphs due to their highly-skewed degree

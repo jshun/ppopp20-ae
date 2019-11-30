@@ -39,7 +39,7 @@ wtestfiles = [("com-orkut-wgh-ligrah","0"),("friendster-wgh-ligrah","0"),("rand1
 edgeawarefiles=["orkut-group-ligrah","orkut-group-wgh-ligrah","web-ligrah","web-wgh-ligrah","livejournal-ligrah","livejournal-wgh-ligrah"]
 
 
-processors = [1,int(threads)/2,int(threads)]
+processors = [1,int(threads)]
 
 os.system("export CILK=1; make clean; make -j")
 
