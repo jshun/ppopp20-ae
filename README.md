@@ -81,7 +81,7 @@ paper. By default, the large Rand2 hypergraph and the clique-expanded
 graph for Friendster are not downloaded. However, the user may
 download the large datasets by passing "LARGE" as an argument to the
 script.  The total storage required without the large datasets is 313 GB
-and with the large datasets is xxx GB.
+and with the large datasets is 1 TB.
 
 For a quick test, the user may download and run the scalability
 experiments on just two datasets (com-orkut and Rand1) by passing
