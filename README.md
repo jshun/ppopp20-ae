@@ -56,11 +56,21 @@ Step-by-Step Instructions
 --------
 
 All of the scripts with default configurations (without large test
-files) can be run with the following command:
+files) can be run with the following command. The expected running
+time of this script is several days on a multicore machine with tens
+of cores.
 
 ```
 $ cd ppopp20-ae/
 $ ./runall
+```
+
+The following script will skip the scalability tests for most of the
+inputs, and will finish in several hours.
+
+```
+$ cd ppopp20-ae/
+$ ./runall-quick
 ```
 
 This section describes each of the commands in more detail, including
@@ -82,14 +92,14 @@ without "QUICK" if the user later wants to download other datasets.)
 
 ```
 $ cd ppopp20-ae/inputs/
-$ ./download_datasets #downloads all datasets except for the large ones
+$ ./download_datasets #downloads all datasets except for the large ones; this will take a few hours
 $ cd ..
 ```
 
 Here are other possible ways to run the download_datasets script:
 
 ```
-$ ./download_datasets LARGE #downloads the large datasets
+$ ./download_datasets LARGE #downloads the large datasets; this will take a few hours
 $ ./download_datasets QUICK #downloads the com-orkut and Rand1 datasets for quick testing
 $ ./download_datasets SIZES #downloads random hypergraphs of varying sizes
 $ ./download_datasets DIRECTION #downloads the com-orkut and livejournal datasets 
@@ -121,13 +131,13 @@ Note: "HyperBFS" corresponds to "Hypertree" in the paper and
 
 
 ```
-$ ./run_scalability | tee scalability_results.txt #default: runs experiments on all datasets except Rand2
+$ ./run_scalability | tee scalability_results.txt #default: runs experiments on all datasets except Rand2; this will take several days to run
 ```
 
 Here are other ways to run the run_scalability script:
 ```
 $ ./run_scalability QUICK | tee scalability_results.txt #runs experiments on only com-orkut and Rand1
-$ ./run_scalability LARGE | tee scalability_results.txt #runs experiments on all datasets
+$ ./run_scalability LARGE | tee scalability_results.txt #runs experiments on all datasets; this will take at least several days to run
 ```
 
 The following command runs all of algorithms on a varying number of
@@ -185,7 +195,7 @@ The paper compares to the MESH hypergraph processing system, which can
 be downloaded from https://github.com/mesh-umn/MESH. If the user
 wishes to test the performance of MESH, please follow the instructions
 on their GitHub page.  The com-orkut hypergraph in MESH format can be
-downloaded from https://ppopp20-ae.s3.amazonaws.com/com-orkut-MESH. 
+downloaded from https://ppopp20-ae.s3.amazonaws.com/com-orkut-MESH.
 
 
 List of claims from the paper supported by the artifact
