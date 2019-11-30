@@ -54,7 +54,7 @@ namespace pbbs {
         table = newA(KV, req_size);
         size = req_size;
         parallel_for (size_t i=0; i<size; i++) { table[i] = empty; }
-        cout << "resized to: " << size << endl;
+        //cout << "resized to: " << size << endl;
       }
     }
 

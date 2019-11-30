@@ -23,7 +23,7 @@ print "Number of threads on machine = " + threads
 
 dataDir = "../../inputs/"
 
-applications = ["HyperBFS","HyperBC","HyperCC","HyperPageRank","HyperKCore-Efficient","HyperKCore"]
+applications = ["HyperBFS","HyperBC","HyperCC","HyperPageRank","HyperKCore-Efficient"]
 mis = ["HyperMIS"]
 wapplications = ["HyperSSSP"]
 
