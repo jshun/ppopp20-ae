@@ -30,7 +30,7 @@ used in the parallel experiments.
 To compile with g++ using Cilk Plus, define the environment variable
 CILK. (Note: OpenMP compilation is also supported, but we found that
 Cilk Plus gives the best performance and thus should be used for the
-artifact evaluation.)  Resuls will vary depending on the machine
+artifact evaluation.)  Results will vary depending on the machine
 (number of cores and sockets, cache sizes, memory bandwidth, clock
 speed, etc.) used for experiments.
 
