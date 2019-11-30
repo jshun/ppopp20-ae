@@ -34,7 +34,7 @@ wapplications = ["HyperSSSP"]
 testfiles = [("com-orkut-ligrah","0"),("friendster-ligrah","0"),("rand1-ligrah","0"),("rand3-ligrah","0"),("orkut-group-ligrah","0"),("web-ligrah","0"),("livejournal-ligrah","0")]
 
 
-wtestfiles = [("com-orkut-wgh-ligrah","0"),("friendster-wgh-ligrah","0"),("rand1-wgh-ligrah","0"),("rand3-wgh-ligrah","0"),("rand-10M-10M-100-wgh","0"),("orkut-group-wgh-ligrah","0"),("web-wgh-ligrah","0"),("livejournal-wgh-ligrah","0")]
+wtestfiles = [("com-orkut-wgh-ligrah","0"),("friendster-wgh-ligrah","0"),("rand1-wgh-ligrah","0"),("rand3-wgh-ligrah","0"),("orkut-group-wgh-ligrah","0"),("web-wgh-ligrah","0"),("livejournal-wgh-ligrah","0")]
 
 edgeawarefiles=["orkut-group-ligrah","orkut-group-wgh-ligrah","web-ligrah","web-wgh-ligrah","livejournal-ligrah","livejournal-wgh-ligrah"]
 
@@ -44,9 +44,9 @@ processors = [1,int(threads)]
 os.system("export CILK=1; make clean; make -j")
 
 if datatype == "QUICK":
-    print "QUICK: running experiments on only two datasets"
-    testfiles = [("com-orkut-ligrah","0"),("rand1-ligrah","0")]
-    wtestfiles = [("com-orkut-wgh-ligrah","0"),("rand1-wgh-ligrah","0")]
+    print "QUICK: running experiments on only com-orkut"
+    testfiles = [("com-orkut-ligrah","0")]
+    wtestfiles = [("com-orkut-wgh-ligrah","0")]
 
 for app in applications:
     for testfile in testfiles :

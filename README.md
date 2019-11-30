@@ -84,10 +84,10 @@ script.  The total storage required without the large datasets is 313 GB
 and with the large datasets is 1 TB.
 
 For a quick test, the user may download and run the scalability
-experiments on just two datasets (com-orkut and Rand1) by passing
+experiments on just one dataset (com-orkut) by passing
 "QUICK" as an argument to the scripts. The total storage required for
 these two datasets is 49 GB.  (The download script will only download
-the two datasets if "QUICK" is a parameter, and will need to be rerun
+the com-orkut dataset if "QUICK" is a parameter, and will need to be rerun
 without "QUICK" if the user later wants to download other datasets.)
 
 ```
@@ -100,7 +100,8 @@ Here are other possible ways to run the download_datasets script:
 
 ```
 $ ./download_datasets LARGE #downloads the large datasets; this will take a few hours
-$ ./download_datasets QUICK #downloads the com-orkut and Rand1 datasets for quick testing
+$ ./download_datasets QUICK #downloads the com-orkut dataset for quick testing
+$ ./download_datasets RAND1 #downloads the Rand1 dataset for testing varying thread counts
 $ ./download_datasets SIZES #downloads random hypergraphs of varying sizes
 $ ./download_datasets DIRECTION #downloads the com-orkut and livejournal datasets 
 ```

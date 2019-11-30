@@ -12,7 +12,9 @@ if len(sys.argv) >= 2:
 
 #print "Downloading " + datatype + " datasets..."
 
-quicktestfiles = ["com-orkut-ligrah","com-orkut-wgh-ligrah","rand1-ligrah","rand1-wgh-ligrah"]
+quicktestfiles = ["com-orkut-ligrah","com-orkut-wgh-ligrah"]
+
+randtestfiles = ["rand1-ligrah","rand1-wgh-ligrah"]
 
 directionfiles = ["com-orkut-ligrah","com-orkut-wgh-ligrah","livejournal-ligrah","livejournal-wgh-ligrah"]
 
@@ -29,6 +31,15 @@ bucket="https://ppopp20-ae.s3.amazonaws.com/"
 if datatype == "QUICK":
    print "Downloading datasets for quick testing..."
    for testfile in quicktestfiles:
+      if not os.path.isfile(testfile):      
+         print "Downloading " + testfile + "..."
+         os.system("wget " + bucket + testfile)
+      else:
+         print testfile + " already exists"
+
+elif datatype == "RAND1":
+   print "Downloading Rand1 dataset..."
+   for testfile in randtestfiles:
       if not os.path.isfile(testfile):      
          print "Downloading " + testfile + "..."
          os.system("wget " + bucket + testfile)
