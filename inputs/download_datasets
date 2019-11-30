@@ -6,9 +6,15 @@ import signal
 import time
 import subprocess
 
-print "Downloading datasets..."
+datatype = "DEFAULT"
+if len(sys.argv) >= 2:
+   datatype = sys.argv[1]
+
+#print "Downloading " + datatype + " datasets..."
 
 quicktestfiles = ["com-orkut-ligrah","com-orkut-wgh-ligrah","rand1-ligrah","rand1-wgh-ligrah"]
+
+directionfiles = ["com-orkut-ligrah","com-orkut-wgh-ligrah","livejournal-ligrah","livejournal-wgh-ligrah"]
 
 testfiles = ["com-orkut-ligrah","friendster-ligrah","rand1-ligrah","rand3-ligrah","orkut-group-ligrah","web-ligrah","livejournal-ligrah","com-orkut-wgh-ligrah","friendster-wgh-ligrah","rand1-wgh-ligrah","rand3-wgh-ligrah","orkut-group-wgh-ligrah","web-wgh-ligrah","livejournal-wgh-ligrah"]
 
@@ -20,7 +26,7 @@ sizefiles = ["rand-10M-10M-10-ligrah","rand-10M-20M-10-ligrah","rand-10M-30M-10-
 
 bucket="https://ppopp20-ae.s3.amazonaws.com/"
 
-if "QUICK" in os.environ:
+if datatype == "QUICK":
    print "Downloading datasets for quick testing..."
    for testfile in quicktestfiles:
       if not os.path.isfile(testfile):      
@@ -29,7 +35,7 @@ if "QUICK" in os.environ:
       else:
          print testfile + " already exists"
 
-elif "SIZES" in os.environ:
+elif datatype == "SIZES":
    print "Downloading random hypergraphs of varying sizes..."
    for testfile in sizefiles:
       if not os.path.isfile(testfile):
@@ -37,8 +43,26 @@ elif "SIZES" in os.environ:
          os.system("wget " + bucket + testfile)
       else:
          print testfile + " already exists"
-   
-elif "LARGE" not in os.environ:
+
+elif datatype == "DIRECTION":
+   print "Downloading com-orkut and LiveJournal..."
+   for testfile in directionfiles:
+      if not os.path.isfile(testfile):
+         print "Downloading " + testfile + "..."
+         os.system("wget " + bucket + testfile)
+      else:
+         print testfile + " already exists"
+
+elif datatype == "LARGE": 
+   print "Downloading large datasets..."
+   for testfile in largetestfiles+cliquefiles:
+      if not os.path.isfile(testfile):
+         print "Downloading " + testfile + "..."
+         os.system("wget " + bucket + testfile)
+      else:
+         print testfile + " already exists"
+
+else:
    print "Downloading all datasets except for the large ones..."
    for testfile in testfiles+sizefiles:
       if not os.path.isfile(testfile):
@@ -47,11 +71,3 @@ elif "LARGE" not in os.environ:
       else:
          print testfile + " already exists"
 
-else: 
-   print "Downloading large datasets..."
-   for testfile in largetestfiles+cliquefiles:
-      if not os.path.isfile(testfile):
-         print "Downloading " + testfile + "..."
-         os.system("wget " + bucket + testfile)
-      else:
-         print testfile + " already exists"

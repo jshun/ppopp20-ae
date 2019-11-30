@@ -4,11 +4,11 @@ Practical Parallel Hypergraph Algorithms (PPoPP 2020 Artifact Evaluation)
 to do
 --------
 
-* script to download datasets on Amazon S3
+
 
 * generate weighted clique for friendster
 
-* make "fast" evaluation using only a few inputs
+
 
 Getting Started Guide
 --------
@@ -70,25 +70,35 @@ This section describes all of the commands needed to run the
 experiments presented in the paper.
 
 
-The following command downloads all of the datasets used
-in the paper. By default, the large Rand2 hypergraph and the
-clique-expanded graph for Friendster are not downloaded, however they
-will be included if the environment variable LARGE is defined before
-running the script. The total storage required without the large
-datasets is xxx and with the large datasets is xxx.
+The following command downloads all of the datasets used in the
+paper. By default, the large Rand2 hypergraph and the clique-expanded
+graph for Friendster are not downloaded. However, the user may
+download the large datasets by passing "LARGE" as an argument to the
+script.  The total storage required without the large datasets is xxx
+and with the large datasets is xxx.
 
 For a quick test, the user may download and run the scalability
-experiments on just two dataset (com-orkut and Rand1) by defining the
-environment variable QUICK before running the scripts. (The download
-script will only download the two datasets if QUICK is defined, and
-will need to be rerun without QUICK defined if the user later wants to
-download other datasets.)
+experiments on just two datasets (com-orkut and Rand1) by passing
+"QUICK" as an argument to the scripts. (The download script will only
+download the two datasets if "QUICK" is a parameter, and will need to
+be rerun without "QUICK" if the user later wants to download other
+datasets.)
 
 ```
 $ cd ppopp20-ae/inputs/
-$ ./download_datasets
+$ ./download_datasets #downloads all datasets except for the large ones
 $ cd ..
 ```
+
+Here are other possible ways to run the download_datasets script:
+
+```
+$ ./download_datasets LARGE #downloads the large datasets
+$ ./download_datasets QUICK #downloads the com-orkut and Rand1 datasets for quick testing
+$ ./download_datasets SIZES #downloads random hypergraphs of varying sizes
+$ ./download_datasets DIRECTION #downloads the com-orkut and livejournal datasets 
+```
+
 
 Then, navigate to the directory with the hypergraph applications:
 
@@ -97,24 +107,29 @@ $ cd apps/hyper/
 ```
 
 
-The following command runs all of the scalability experiments in the
-paper as reported in Table 2, and outputs the numbers to a file. The
+The command below runs all of the scalability experiments in the paper
+as reported in Table 2, and outputs the numbers to a file. The
 parallel times in the paper use all hyper-threads, and our script
 prints the times using all hyper-threads as well as times using half
 of the hyper-threads.  Experiments on more than 4 threads are run
 three times, except for MIS, which is only run once since the program
-modifies the input. Note: "HyperBFS" corresponds to "Hypertree" in the
-paper and "HyperKCore-Efficient" corresponds to "WE k-core" in the
-paper. Edge-aware parallelization is used for the Orkut-group, Web,
-and LiveJournal hypergraphs due to their highly-skewed degree
+modifies the input.
+
+Edge-aware parallelization is used for the Orkut-group, Web, and
+LiveJournal hypergraphs due to their highly-skewed degree
 distributions. By default, the large Rand2 hypergraph is not included
-in the experiments, however it will be included if the environment
-variable LARGE is defined before running the script. If the
-environment variable QUICK is defined, the experiments will only be
-run on com-orkut and Rand1.
+in the experiments, however it will be included if "LARGE" is passed
+as an argument to the script. If "QUICK" is passed as an argument to
+the script, the experiments will only be run on com-orkut and Rand1.
+
+Note: "HyperBFS" corresponds to "Hypertree" in the paper and
+"HyperKCore-Efficient" corresponds to "WE k-core" in the paper.
+
 
 ```
-$ ./run_scalability | tee scalability_results.txt
+$ ./run_scalability | tee scalability_results.txt #default: runs experiments on all datasets except Rand2
+$ ./run_scalability QUICK | tee scalability_results.txt #runs experiments on only com-orkut and Rand1
+$ ./run_scalability LARGE | tee scalability_results.txt #runs experiments on all datasets
 ```
 
 The following command runs all of algorithms on a varying number of
@@ -126,33 +141,42 @@ $ ./run_varying_threads | tee varying_threads_results.txt
 ```
 
 The following command runs all of algorithms on a varying number of
-hyperedges (Figure 3 in the paper), and outputs the numbers to a file:
+hyperedges (Figure 3 in the paper), and outputs the numbers to a
+file. The files for this experiment can be downloaded by going to the
+inputs/ directory, and running the download_datasets script described
+above with the "SIZES" argument.
 
 ```
 $ ./run_varying_hyperedges | tee varying_hyperedges_results.txt
 ```
 
-The following computes the running time of sparse, dense, and hybrid
-traversals on com-Orkut and LiveJournal (Figures 4 and 5 in the
-paper), and outputs the numbers to a file:
+The following command computes the running time of sparse, dense, and
+hybrid traversals on com-Orkut and LiveJournal (Figures 4 and 5 in the
+paper), and outputs the numbers to a file. The files for this
+experiment can be downloaded by going to the inputs/ directory, and
+running the download_datasets script described above with the
+"DIRECTION" argument.
 
 ```
 $ ./run_directions | tee directions_results.txt
 ```
 
-The following computes the running time using different thresholds for
-direction-optimization on com-Orkut and LiveJournal (Figures 6 and 7
-in the paper), and outputs the numbers to a file:
+The following command computes the running time using different
+thresholds for direction-optimization on com-Orkut and LiveJournal
+(Figures 6 and 7 in the paper), and outputs the numbers to a file.
+The files for this experiment can be downloaded by going to the
+inputs/ directory, and running the download_datasets script described
+above with the "DIRECTION" argument.
 
 ```
 $ ./run_thresholds | tee thresholds_results.txt
 ```
 
-The following computes the running time on the clique-expanded graph
-for Friendster using breadth-first search, connected components, and
-SSSP in Ligra. This script assumes that the clique-expanded graph for
-Friendster has been downloaded (see instructions above for downloading
-the datasets).
+The following command computes the running time on the clique-expanded
+graph for Friendster using breadth-first search, connected components,
+and SSSP in Ligra. This script assumes that the clique-expanded graph
+for Friendster has been downloaded (see instructions above for
+downloading the large datasets).
 
 ```
 $ cd ..;
@@ -171,8 +195,8 @@ downloaded from https://ppopp20-ae.s3.amazonaws.com/com-orkut-MESH.
 List of claims from the paper supported by the artifact
 --------
 
-* The parallel hypergraph algorithms achieve good parallel speedup
-  (Table 2 and Figure 2 of the paper).
+* The parallel hypergraph algorithms achieve good performance and
+  parallel speedup (Table 2 and Figure 2 of the paper).
 
 * The parallel hypergraph algorithms achieve good scalability with
   respect to input size (Figure 3).
@@ -184,7 +208,7 @@ List of claims from the paper supported by the artifact
   hybrid traversal strategy (Figures 6 and 7).
 
 * Using the hypergraph algorithms is faster than using the
-  corresponding graph algorithm on the clique-expanded representation
+  corresponding graph algorithms on the clique-expanded representation
   for BFS, CC, and SSSP, which are the only three algorithms in the
   paper for which the graph algorithm would produce the correct result
   on the clique-expanded representation.
@@ -202,9 +226,9 @@ List of claims from the paper not supported by the artifact
 * The performance counters in Table 3 are obtained using the
   [perf](https://perf.wiki.kernel.org/index.php/Tutorial)
   tool. Obtaining these counters requires root access to the machine
-  as well as modifying the code to not include the loading of the
+  as well as modifying the code to exclude the loading of the
   dataset in the performance measurements. Not all performance
-  counters are supported by all machines. We decided not to include
+  counters are supported by all machines. We have not included
   this in the artifact evaluation due to the significant effort that
   would be required by the user to get the performance counters to
   work properly.
@@ -339,7 +363,7 @@ file name.
 
 **hyperAdjToBinary** converts an input in adjacency hypergraph format
 to binary format. The argument is the adjacency hypergraph file
-name. For a weighted graph, pass the "-w" flag before the file
+name. For a weighted hypergraph, pass the "-w" flag before the file
 name. The program will generate 5 output files with the input file
 name followed by each of the prefixes .config, .vadj, .vidx, .hadj,
 and .hidx.
