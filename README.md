@@ -66,7 +66,9 @@ $ ./runall
 ```
 
 The following script will skip the scalability tests for all of the
-inputs except com-orkut, and will finish in several hours.
+inputs except com-orkut, and also skip the test on varying thread
+counts on Rand1. This script should finish in several hours on a
+multicore machine with tens of cores.
 
 ```
 $ cd ppopp20-ae/
@@ -126,8 +128,9 @@ in the experiments, however it will be included if "LARGE" is passed
 as an argument to the script. If "QUICK" is passed as an argument to
 the script, the experiments will only be run on com-orkut.
 
-Note: "HyperBFS" corresponds to "Hypertree" in the paper and
-"HyperKCore-Efficient" corresponds to "WE k-core" in the paper.
+Note: "HyperBFS" corresponds to "Hypertree" in the paper, "HyperKCore"
+corresponds to "WI k-core" in the paper, and "HyperKCore-Efficient"
+corresponds to "WE k-core" in the paper.
 
 
 ```
