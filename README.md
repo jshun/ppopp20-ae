@@ -129,9 +129,9 @@ in the experiments, however it will be included if "LARGE" is passed
 as an argument to the script. If "QUICK" is passed as an argument to
 the script, the experiments will only be run on com-orkut.
 
-Note: "HyperBFS" corresponds to "Hypertree" in the paper, "HyperKCore"
+**Note: "HyperBFS" corresponds to "Hypertree" in the paper, "HyperKCore"
 corresponds to "WI k-core" in the paper, and "HyperKCore-Efficient"
-corresponds to "WE k-core" in the paper.
+corresponds to "WE k-core" in the paper.**
 
 
 ```
@@ -201,6 +201,29 @@ wishes to test the performance of MESH, please follow the instructions
 on their GitHub page.  The com-orkut hypergraph in MESH format can be
 downloaded from https://ppopp20-ae.s3.amazonaws.com/com-orkut-MESH.
 
+Expected output format
+--------
+
+The expected output format of the Ligra-H code is a line containing
+the name of the algorithm, number of threads used, and the name of the
+dataset (with a suffix of -ligrah), followed by one or more lines with
+the running time of each trial. Here are examples:
+
+```
+HyperBFS 1 thread(s) on com-orkut-ligrah
+Running time : 1.04
+```
+
+```
+HyperBFS 144 thread(s) on com-orkut-ligrah
+Running time : 0.031
+Running time : 0.031
+Running time : 0.033
+
+```
+
+The provided scripts will output the lines for multiple experiments
+and write them to a text file.
 
 List of claims from the paper supported by the artifact
 --------
