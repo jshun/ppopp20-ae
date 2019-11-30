@@ -204,17 +204,32 @@ downloaded from https://ppopp20-ae.s3.amazonaws.com/com-orkut-MESH.
 Expected output format
 --------
 
-The expected output format of the Ligra-H code is a line containing
+The expected output format of the Ligra-H code is one or more lines with
+the running time of each trial. For example:
+
+```
+$ numactl -i all ./HyperBFS -s ../../inputs/com-orkut-ligrah #running 3 trials on all threads
+Running time : 0.031
+Running time : 0.031
+Running time : 0.033
+
+$ numactl -i all ./HyperBFS -s -rounds 1 ../../inputs/com-orkut-ligrah #running 1 trial on all threads
+Running time : 0.031
+
+$ CILK_NWORKERS=1 ./HyperBFS -s -rounds 1 ../../inputs/com-orkut-ligrah #running 1 trial on one thread
+Running time : 1.04
+
+```
+
+The provided scripts will run multiple experiments, and for each experiment it will output a line containing
 the name of the algorithm, number of threads used, and the name of the
 dataset (with a suffix of -ligrah), followed by one or more lines with
-the running time of each trial. Here are examples:
+the running time of each trial. For example:
 
 ```
 HyperBFS 1 thread(s) on com-orkut-ligrah
 Running time : 1.04
-```
 
-```
 HyperBFS 144 thread(s) on com-orkut-ligrah
 Running time : 0.031
 Running time : 0.031
@@ -222,8 +237,6 @@ Running time : 0.033
 
 ```
 
-The provided scripts will output the lines for multiple experiments
-and write them to a text file.
 
 List of claims from the paper supported by the artifact
 --------
