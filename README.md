@@ -1,15 +1,6 @@
 Practical Parallel Hypergraph Algorithms (PPoPP 2020 Artifact Evaluation)
 ======================
 
-to do
---------
-
-
-
-* generate weighted clique for friendster
-
-
-
 Getting Started Guide
 --------
 
@@ -18,8 +9,6 @@ The code for the hypergraph algorithms is in the apps/hyper/
 directory, which is where compilation should be performed for the
 artifact evaluation.  Hypergraph generators and converters are
 provided in the utils/ directory.
-
-
 
 Compilation is done from within the apps/hyper/ directory. Experiments
 in the paper were performed using the g++ version 7.4.0 compiler with
@@ -106,13 +95,11 @@ $ ./download_datasets SIZES #downloads random hypergraphs of varying sizes
 $ ./download_datasets DIRECTION #downloads the com-orkut and livejournal datasets 
 ```
 
-
 Then, navigate to the directory with the hypergraph applications:
 
 ```
 $ cd apps/hyper/
 ```
-
 
 The command below runs all of the scalability experiments in the paper
 as reported in Table 2, and outputs the numbers to a file. The
@@ -199,8 +186,6 @@ be downloaded from https://github.com/mesh-umn/MESH. If the user
 wishes to test the performance of MESH, please follow the instructions
 on their GitHub page.  The com-orkut hypergraph in MESH format can be
 downloaded from https://ppopp20-ae.s3.amazonaws.com/com-orkut-MESH. 
-
-
 
 
 List of claims from the paper supported by the artifact
