@@ -66,9 +66,14 @@ installed
 Step-by-Step Instructions
 --------
 
-This section describes all of the commands needed to run the
-experiments presented in the paper.
+All of the scripts with default configurations can be run with the following command:
+```
+$ cd ppopp20-ae/
+$ ./runall
+```
 
+This section describes each of the commands in more detail, including
+different possible configurations.
 
 The following command downloads all of the datasets used in the
 paper. By default, the large Rand2 hypergraph and the clique-expanded
@@ -128,6 +133,10 @@ Note: "HyperBFS" corresponds to "Hypertree" in the paper and
 
 ```
 $ ./run_scalability | tee scalability_results.txt #default: runs experiments on all datasets except Rand2
+```
+
+Here are other ways to run the run_scalability script:
+```
 $ ./run_scalability QUICK | tee scalability_results.txt #runs experiments on only com-orkut and Rand1
 $ ./run_scalability LARGE | tee scalability_results.txt #runs experiments on all datasets
 ```

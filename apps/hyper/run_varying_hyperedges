@@ -13,7 +13,7 @@ def shellGetOutput(str) :
 
     return output
 
-print "Running varying hyperedges experiments..."
+print "\n********Running varying hyperedges experiments********\n"
 
 
 threads = shellGetOutput("nproc --all")
@@ -32,8 +32,6 @@ testfiles = [("rand-10M-10M-10-ligrah","0"),("rand-10M-20M-10-ligrah","0"),("ran
 wtestfiles = [("rand-10M-10M-10-wgh-ligrah","0"),("rand-10M-20M-10-wgh-ligrah","0"),("rand-10M-30M-10-wgh-ligrah","0"),("rand-10M-40M-10-wgh-ligrah","0"),("rand-10M-50M-10-wgh-ligrah","0"),("rand-10M-60M-10-wgh-ligrah","0"),("rand-10M-70M-10-wgh-ligrah","0"),("rand-10M-80M-10-wgh-ligrah","0"),("rand-10M-90M-10-wgh-ligrah","0"),("rand-10M-100M-10-wgh-ligrah","0")]
 
 processors = [int(threads)]
-
-print processors
 
 os.system("export CILK=1; make clean; make -j")
 

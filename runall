@@ -1,0 +1,15 @@
+#/bin/bash
+
+cd inputs/;
+chmod 777 download_datasets
+./download_datasets;
+
+cd ../apps/hyper/;
+chmod 777 run_*
+./run_scalability | tee scalability_results.txt
+./run_varying_threads | tee varying_threads_results.txt
+./run_varying_hyperedges | tee varying_hyperedges_results.txt
+./run_directions | tee directions_results.txt
+./run_thresholds | tee thresholds_results.txt
+
+

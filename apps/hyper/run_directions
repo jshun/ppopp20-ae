@@ -13,7 +13,7 @@ def shellGetOutput(str) :
 
     return output
 
-print "Running scalability experiments..."
+print "\n********Running direction experiments********\n"
 
 
 threads = shellGetOutput("nproc --all")
@@ -34,8 +34,6 @@ wtestfiles = [("com-orkut-wgh-ligrah","0"),("livejournal-wgh-ligrah","0")]
 edgeawarefiles=["livejournal-ligrah","livejournal-wgh-ligrah"]
 
 processors = [int(threads)]
-
-print processors
 
 os.system("export CILK=1; make clean; make all direction -j")
 

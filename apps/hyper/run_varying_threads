@@ -13,7 +13,7 @@ def shellGetOutput(str) :
 
     return output
           
-print "Running varying thread experiments..."
+print "\n********Running varying thread experiments********\n"
 
 
 threads = shellGetOutput("nproc --all")
@@ -32,8 +32,6 @@ testfiles = [("rand1-ligrah","0")]
 wtestfiles = [("rand1-wgh-ligrah","0")]
 
 processors = [1,2,4]+range(8,int(threads)+1,8)
-
-print processors
 
 os.system("export CILK=1; make clean; make -j")
 
