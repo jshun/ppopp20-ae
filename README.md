@@ -66,7 +66,9 @@ installed
 Step-by-Step Instructions
 --------
 
-All of the scripts with default configurations can be run with the following command:
+All of the scripts with default configurations (without large test
+files) can be run with the following command:
+
 ```
 $ cd ppopp20-ae/
 $ ./runall

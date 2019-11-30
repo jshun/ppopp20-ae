@@ -1,5 +1,7 @@
 #/bin/bash
 
+export CILK=1
+
 cd inputs/;
 chmod 777 download_datasets
 ./download_datasets;
