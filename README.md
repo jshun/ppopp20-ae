@@ -120,7 +120,7 @@ parallel times in the paper use all hyper-threads, and our script
 prints the times using all hyper-threads.  Experiments on more than 4
 threads are run three times, except for MIS, which is only run once
 since the program modifies the input (numbers reported in the paper
-take the median of the three trials).
+take the minimum of three trials).
 
 Edge-aware parallelization is used for the Orkut-group, Web, and
 LiveJournal hypergraphs due to their highly-skewed degree
