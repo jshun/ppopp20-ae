@@ -81,15 +81,15 @@ The following command downloads all of the datasets used in the
 paper. By default, the large Rand2 hypergraph and the clique-expanded
 graph for Friendster are not downloaded. However, the user may
 download the large datasets by passing "LARGE" as an argument to the
-script.  The total storage required without the large datasets is xxx
-and with the large datasets is xxx.
+script.  The total storage required without the large datasets is 313 GB
+and with the large datasets is xxx GB.
 
 For a quick test, the user may download and run the scalability
 experiments on just two datasets (com-orkut and Rand1) by passing
-"QUICK" as an argument to the scripts. (The download script will only
-download the two datasets if "QUICK" is a parameter, and will need to
-be rerun without "QUICK" if the user later wants to download other
-datasets.)
+"QUICK" as an argument to the scripts. The total storage required for
+these two datasets is 49 GB.  (The download script will only download
+the two datasets if "QUICK" is a parameter, and will need to be rerun
+without "QUICK" if the user later wants to download other datasets.)
 
 ```
 $ cd ppopp20-ae/inputs/
