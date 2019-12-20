@@ -18,11 +18,12 @@ PowerEdge R930 with four 2.4GHz 18-core E7-8867 v4 Xeon processors)
 with 1TB of RAM. We use 'numactl -i all' for parallel experiments for
 better performance.
 
-First, install a version of g++ with support for Cilk Plus (g++
-version 5.4.0 or later) on a Linux machine.  If using an AWS EC2 instance with
+First, install a compiler version with support for Cilk Plus (g++
+version 5.4.0 or later or Tapir/LLVM) on a Linux machine.  If using an AWS EC2 instance with
 RedHat OS, the following instructions can be used to easily install g++ with
 Cilk Plus:
 https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/compile-software.html.
+A docker image containing the g++ cilk compiler can be found here: https://hub.docker.com/r/jonniesweb/cilkplus. Instructions for installing the Tapir/LLVM compiler are available here: http://cilk.mit.edu/.
 
 Install [numactl](https://linux.die.net/man/8/numactl), which is
 used in the parallel experiments.

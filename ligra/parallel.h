@@ -24,7 +24,7 @@
 #ifndef _PARALLEL_H
 #define _PARALLEL_H
 
-#if defined(CILK)
+#if defined(CILK) || defined(CLANG)
 #include <cilk/cilk.h>
 #define parallel_main main
 #define parallel_for cilk_for

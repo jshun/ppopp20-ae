@@ -28,6 +28,11 @@ PCC = g++
 PCFLAGS = -std=c++14 -fcilkplus -lcilkrts -O3 -DCILK $(INTT) $(INTE) $(CODE) $(PD) $(MEM)
 PLFLAGS = -fcilkplus -lcilkrts
 
+else ifdef CLANG
+PCC = clang++
+PCFLAGS = -std=c++14 -fcilkplus  -O3 -DCILK $(INTT) $(INTE) $(CODE) $(PD) $(MEM)
+PLFLAGS = -fcilkplus 
+
 else ifdef MKLROOT
 PCC = icpc
 PCFLAGS = -std=c++14 -O3 -DCILKP $(INTT) $(INTE) $(CODE) $(PD) $(MEM)
