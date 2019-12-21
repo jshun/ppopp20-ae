@@ -149,7 +149,16 @@ format:
 
 * rand3: [[\[Hygra (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand3-hygra), [[\[Hygra (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand3-wgh-hygra)
 
-* random hypergraph with 10M vertices and 10M hyperedges, each with cardinality 10: [\[Hygra (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-10M-10-hygra), [\[Hygra (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-10M-10-wgh-hygra)
+* random hypergraphs (X, Y) in Hygra format with X vertices and Y hyperedges, each with cardinality 10: [\[(10M, 10M) (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-10M-10-hygra), [\[(10M, 10M) (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-10M-10-wgh-hygra),
+[\[(10M, 20M) (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-20M-10-hygra), [\[(10M, 20M) (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-20M-10-wgh-hygra),
+[\[(10M, 30M) (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-30M-10-hygra), [\[(10M, 30M) (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-30M-10-wgh-hygra),
+[\[(10M, 40M) (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-40M-10-hygra), [\[(10M, 40M) (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-40M-10-wgh-hygra),
+[\[(10M, 50M) (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-50M-10-hygra), [\[(10M, 50M) (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-50M-10-wgh-hygra),
+[\[(10M, 60M) (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-60M-10-hygra), [\[(10M, 60M) (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-60M-10-wgh-hygra),
+[\[(10M, 70M) (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-70M-10-hygra), [\[(10M, 70M) (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-70M-10-wgh-hygra),
+[\[(10M, 80M) (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-80M-10-hygra), [\[(10M, 80M) (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-80M-10-wgh-hygra),
+[\[(10M, 90M) (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-90M-10-hygra), [\[(10M, 90M) (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-90M-10-wgh-hygra),
+[\[(10M, 100M) (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-100M-10-hygra), [\[(10M, 100M) (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-100M-10-wgh-hygra)
 
 To run the timing experiments, navigate to the directory with the hypergraph applications:
 
