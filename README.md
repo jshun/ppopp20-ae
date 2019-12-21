@@ -113,52 +113,12 @@ $ ./download_datasets SIZES #downloads random hypergraphs of varying sizes
 $ ./download_datasets DIRECTION #downloads the com-orkut and livejournal datasets 
 ```
 
-The datasets come from the following sources:
-
-* [Stanford Large Network Dataset Collection (SNAP)](http://snap.stanford.edu/data/index.html)
-
-* [Koblenz Network Collection (KONECT)](http://konect.uni-koblenz.de/)
-
-* The synthetic random hypergraph generator provided in the utils/ directory.
-
-Files can be downloaded directly from
-[SNAP](http://snap.stanford.edu/data/index.html) and
-[KONECT](http://konect.uni-koblenz.de/) and converted to Hygra format
-using the converters described below in the **Utilities** section of
-this README file. Random hypergraphs can be generated directly using
-the random hypergraph generator described in the **Utilities**
-section. Weighted hypergraphs can be generated from the unweighted
-hypergraphs using the *adjHypergraphAddWeights* script described in
-the **Utilities** section.
-
-Here are the links to specific files in Hygra format (which can be
-downloaded individually) and the corresponding files in SNAP or KONECT
-format:
-
-* com-orkut: [\[Hygra (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/com-orkut-hygra), [\[Hygra (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/com-orkut-wgh-hygra), [\[SNAP\]](http://snap.stanford.edu/data/com-Orkut.html)
-* friendster: [\[Hygra (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/friendster-hygra), [\[Hygra (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/friendster-wgh-hygra), [\[SNAP\]](http://snap.stanford.edu/data/com-Friendster.html), [\[Ligra clique-expanded graph (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/friendster-clique), [\[Ligra clique-expanded graph (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/friendster-wgh-clique)
-* orkut-group: [\[Hygra (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/orkut-group-hygra), [\[Hygra (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/orkut-group-wgh-hygra), [\[KONECT\]](http://konect.uni-koblenz.de/networks/orkut-groupmemberships) 
-
-* web: [\[Hygra (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/web-hygra), [\[Hygra (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/web-wgh-hygra), [\[KONECT\]](http://konect.uni-koblenz.de/networks/trackers-trackers)
-
-* livejournal: [\[Hygra (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/livejournal-hygra), [\[Hygra (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/livejournal-wgh-hygra), [\[KONECT\]](http://konect.uni-koblenz.de/networks/livejournal-groupmemberships)
-
-* rand1: [\[Hygra (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand1-hygra), [\[Hygra (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand1-wgh-hygra)
-
-* rand2: [\[Hygra (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand2-hygra), [\[Hygra (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand2-wgh-hygra)
-
-* rand3: [[\[Hygra (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand3-hygra), [[\[Hygra (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand3-wgh-hygra)
-
-* random hypergraphs (X, Y) in Hygra format with X vertices and Y hyperedges, each with cardinality 10: [\[(10M, 10M) (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-10M-10-hygra), [\[(10M, 10M) (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-10M-10-wgh-hygra),
-[\[(10M, 20M) (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-20M-10-hygra), [\[(10M, 20M) (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-20M-10-wgh-hygra),
-[\[(10M, 30M) (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-30M-10-hygra), [\[(10M, 30M) (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-30M-10-wgh-hygra),
-[\[(10M, 40M) (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-40M-10-hygra), [\[(10M, 40M) (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-40M-10-wgh-hygra),
-[\[(10M, 50M) (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-50M-10-hygra), [\[(10M, 50M) (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-50M-10-wgh-hygra),
-[\[(10M, 60M) (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-60M-10-hygra), [\[(10M, 60M) (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-60M-10-wgh-hygra),
-[\[(10M, 70M) (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-70M-10-hygra), [\[(10M, 70M) (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-70M-10-wgh-hygra),
-[\[(10M, 80M) (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-80M-10-hygra), [\[(10M, 80M) (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-80M-10-wgh-hygra),
-[\[(10M, 90M) (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-90M-10-hygra), [\[(10M, 90M) (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-90M-10-wgh-hygra),
-[\[(10M, 100M) (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-100M-10-hygra), [\[(10M, 100M) (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-100M-10-wgh-hygra)
+The datasets come from the [Stanford Large Network Dataset Collection
+(SNAP)](http://snap.stanford.edu/data/index.html), the [Koblenz
+Network Collection (KONECT)](http://konect.uni-koblenz.de/), and
+synthetic random hypergraph generator provided in the utils/
+directory. These datasets can be downloaded individually, and the
+links are provided in the **Datasets** section below.
 
 To run the timing experiments, navigate to the directory with the hypergraph applications:
 
@@ -289,6 +249,56 @@ Running time : 0.033
 
 ```
 
+Datasets
+--------
+
+
+The datasets come from the following sources:
+
+* [Stanford Large Network Dataset Collection (SNAP)](http://snap.stanford.edu/data/index.html)
+
+* [Koblenz Network Collection (KONECT)](http://konect.uni-koblenz.de/)
+
+* The synthetic random hypergraph generator provided in the utils/ directory.
+
+Files can be downloaded directly from
+[SNAP](http://snap.stanford.edu/data/index.html) and
+[KONECT](http://konect.uni-koblenz.de/) and converted to Hygra format
+using the converters described below in the **Utilities** section of
+this README file. Random hypergraphs can be generated directly using
+the random hypergraph generator described in the **Utilities**
+section. Weighted hypergraphs can be generated from the unweighted
+hypergraphs using the **adjHypergraphAddWeights** script described in
+the **Utilities** section.
+
+Here are the links to specific files in Hygra format (which can be
+downloaded individually) and the corresponding files in SNAP or KONECT
+format:
+
+* com-orkut: [\[Hygra (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/com-orkut-hygra), [\[Hygra (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/com-orkut-wgh-hygra), [\[SNAP\]](http://snap.stanford.edu/data/com-Orkut.html)
+* friendster: [\[Hygra (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/friendster-hygra), [\[Hygra (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/friendster-wgh-hygra), [\[SNAP\]](http://snap.stanford.edu/data/com-Friendster.html), [\[Ligra clique-expanded graph (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/friendster-clique), [\[Ligra clique-expanded graph (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/friendster-wgh-clique)
+* orkut-group: [\[Hygra (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/orkut-group-hygra), [\[Hygra (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/orkut-group-wgh-hygra), [\[KONECT\]](http://konect.uni-koblenz.de/networks/orkut-groupmemberships) 
+
+* web: [\[Hygra (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/web-hygra), [\[Hygra (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/web-wgh-hygra), [\[KONECT\]](http://konect.uni-koblenz.de/networks/trackers-trackers)
+
+* livejournal: [\[Hygra (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/livejournal-hygra), [\[Hygra (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/livejournal-wgh-hygra), [\[KONECT\]](http://konect.uni-koblenz.de/networks/livejournal-groupmemberships)
+
+* rand1: [\[Hygra (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand1-hygra), [\[Hygra (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand1-wgh-hygra)
+
+* rand2: [\[Hygra (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand2-hygra), [\[Hygra (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand2-wgh-hygra)
+
+* rand3: [[\[Hygra (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand3-hygra), [[\[Hygra (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand3-wgh-hygra)
+
+* random hypergraphs (X, Y) in Hygra format with X vertices and Y hyperedges, each with cardinality 10: [\[(10M, 10M) (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-10M-10-hygra), [\[(10M, 10M) (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-10M-10-wgh-hygra),
+[\[(10M, 20M) (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-20M-10-hygra), [\[(10M, 20M) (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-20M-10-wgh-hygra),
+[\[(10M, 30M) (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-30M-10-hygra), [\[(10M, 30M) (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-30M-10-wgh-hygra),
+[\[(10M, 40M) (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-40M-10-hygra), [\[(10M, 40M) (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-40M-10-wgh-hygra),
+[\[(10M, 50M) (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-50M-10-hygra), [\[(10M, 50M) (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-50M-10-wgh-hygra),
+[\[(10M, 60M) (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-60M-10-hygra), [\[(10M, 60M) (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-60M-10-wgh-hygra),
+[\[(10M, 70M) (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-70M-10-hygra), [\[(10M, 70M) (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-70M-10-wgh-hygra),
+[\[(10M, 80M) (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-80M-10-hygra), [\[(10M, 80M) (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-80M-10-wgh-hygra),
+[\[(10M, 90M) (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-90M-10-hygra), [\[(10M, 90M) (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-90M-10-wgh-hygra),
+[\[(10M, 100M) (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-100M-10-hygra), [\[(10M, 100M) (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-100M-10-wgh-hygra)
 
 List of claims from the paper supported by the artifact
 --------
