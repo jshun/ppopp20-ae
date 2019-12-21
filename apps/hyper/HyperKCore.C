@@ -25,7 +25,7 @@
 // Parallel implementation of K-Core decomposition of a symmetric
 // hypergraph.
 #define HYPER 1
-#include "ligra-h.h"
+#include "hygra.h"
 
 struct Remove_Hyperedge {
   uintE* Flags;

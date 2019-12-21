@@ -1,5 +1,5 @@
 #define HYPER 1
-#include "ligra-h.h"
+#include "hygra.h"
 #include "index_map.h"
 #include "bucket.h"
 #include "edgeMapReduce.h"
