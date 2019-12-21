@@ -135,7 +135,7 @@ Here are the links to specific files in Hygra format (which can be
 downloaded individually) and the corresponding files in SNAP or KONECT
 format:
 
-* com-orkut: [Hygra (unweighted)](https://ppopp20-ae.s3.amazonaws.com/com-orkut-hygra), [Hygra (unweighted)](https://ppopp20-ae.s3.amazonaws.com/com-orkut-wgh-hygra), [SNAP](http://snap.stanford.edu/data/com-Orkut.html)
+* com-orkut: [\[Hygra (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/com-orkut-hygra), [\[Hygra (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/com-orkut-wgh-hygra), [\[SNAP\]](http://snap.stanford.edu/data/com-Orkut.html)
 * 
 
 To run the timing experiments, navigate to the directory with the hypergraph applications:
