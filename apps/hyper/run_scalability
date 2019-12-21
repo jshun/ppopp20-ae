@@ -56,7 +56,7 @@ for app in applications:
             edgeaware = ""
         for p in processors :
             if p <= 4:
-                ss = "export CILK_NWORKERS="+`p`+"; ./"+app+edgeaware+' -s -rounds 1 -maxiters 1 -r '+testfile[1]+' '+dataDir+testfile[0]
+                ss = "export CILK_NWORKERS="+`p`+"; ./"+app+edgeaware+' -s -rounds 3 -maxiters 1 -r '+testfile[1]+' '+dataDir+testfile[0]
             else:
                 ss = "export CILK_NWORKERS="+`p`+"; numactl -i all ./" + app + edgeaware + ' -s -rounds 3 -maxiters 1 -r '+testfile[1]+ ' ' + dataDir + testfile[0]
             print app+edgeaware+" "+`p` + " thread(s) on " + testfile[0] 
@@ -86,7 +86,7 @@ for app in wapplications:
             edgeaware = ""
         for p in processors :
             if p <= 4:
-                ss = "export CILK_NWORKERS="+`p`+"; ./"+app+edgeaware+' -s -rounds 1 -r '+testfile[1]+' '+dataDir+testfile[0]
+                ss = "export CILK_NWORKERS="+`p`+"; ./"+app+edgeaware+' -s -rounds 3 -r '+testfile[1]+' '+dataDir+testfile[0]
             else:
                 ss = "export CILK_NWORKERS="+`p`+"; numactl -i all ./" + app+edgeaware + ' -s -rounds 3 -r '+testfile[1]+' ' + dataDir + testfile[0]
             print app+edgeaware+" "+`p` + " thread(s) on " + testfile[0]
@@ -104,7 +104,7 @@ if datatype == "LARGE":
         for testfile in testfiles :
             for p in processors :
                 if p <= 4:
-                    ss = "export CILK_NWORKERS="+`p`+"; ./"+app+' -s -rounds 1 -maxiters 1 -r '+testfile[1]+' '+dataDir+testfile[0]
+                    ss = "export CILK_NWORKERS="+`p`+"; ./"+app+' -s -rounds 3 -maxiters 1 -r '+testfile[1]+' '+dataDir+testfile[0]
                 else:
                     ss = "export CILK_NWORKERS="+`p`+"; numactl -i all ./" + app + ' -s -rounds 3 -maxiters 1 -r '+testfile[1]+ ' ' + dataDir + testfile[0]
                 print app+" "+`p` + " thread(s) on " + testfile[0] 
@@ -126,7 +126,7 @@ if datatype == "LARGE":
         for testfile in wtestfiles :
             for p in processors :
                 if p <= 4:
-                    ss = "export CILK_NWORKERS="+`p`+"; ./"+app+' -s -rounds 1 -r '+testfile[1]+' '+dataDir+testfile[0]
+                    ss = "export CILK_NWORKERS="+`p`+"; ./"+app+' -s -rounds 3 -r '+testfile[1]+' '+dataDir+testfile[0]
                 else:
                     ss = "export CILK_NWORKERS="+`p`+"; numactl -i all ./" + app + ' -s -rounds 3 -r '+testfile[1]+' ' + dataDir + testfile[0]
                 print app+" "+`p` + " thread(s) on " + testfile[0]

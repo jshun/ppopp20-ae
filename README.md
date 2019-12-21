@@ -129,10 +129,10 @@ $ cd apps/hyper/
 The command below runs all of the scalability experiments in the paper
 as reported in Table 2, and outputs the numbers to a file. The
 parallel times in the paper use all hyper-threads, and our script
-prints the times using all hyper-threads.  Experiments on more than 4
-threads are run three times, except for MIS, which is only run once
-since the program modifies the input (numbers reported in the paper
-take the minimum of three trials).
+prints the times using all hyper-threads.  Experiments are run three
+times, except for MIS, which is only run once since the program
+modifies the input (numbers reported in the paper take the minimum of
+three trials).
 
 Edge-aware parallelization is used for the Orkut-group, Web, and
 LiveJournal hypergraphs due to their highly-skewed degree
@@ -233,13 +233,16 @@ Running time : 1.04
 
 ```
 
-The provided scripts will run multiple experiments, and for each experiment it will output a line containing
-the name of the algorithm, number of threads used, and the name of the
-dataset (with a suffix of -hygra), followed by one or more lines with
-the running time of each trial. For example:
+The provided scripts will run multiple experiments, and for each
+experiment it will output a line containing the name of the algorithm,
+number of threads used, and the name of the dataset (with a suffix of
+-hygra), followed by one or more lines with the running time of each
+trial. For example:
 
 ```
 HyperBFS 1 thread(s) on com-orkut-hygra
+Running time : 1.04
+Running time : 1.04
 Running time : 1.04
 
 HyperBFS 144 thread(s) on com-orkut-hygra
@@ -368,8 +371,10 @@ $ numactl -i all ./HyperBFS -s <input file>
 ```
 
 For traversal algorithms, one can also pass the "-r" flag followed by
-an integer to indicate the source vertex.  Random hypergraphs can be
-generated with the hypergraph generator in the utils/ directory.
+an integer to indicate the source vertex.  By default, the programs
+are run for three trials, but one can change the number of trials by
+passing the "-rounds" flag followed by an integer indicating the
+number of trials.
 
 
 
