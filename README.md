@@ -136,14 +136,20 @@ downloaded individually) and the corresponding files in SNAP or KONECT
 format:
 
 * com-orkut: [\[Hygra (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/com-orkut-hygra), [\[Hygra (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/com-orkut-wgh-hygra), [\[SNAP\]](http://snap.stanford.edu/data/com-Orkut.html)
-* friendster: [\[Hygra (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/friendster-hygra), [\[Hygra (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/friendster-wgh-hygra), [\[SNAP\]](http://snap.stanford.edu/data/com-Friendster.html)
+* friendster: [\[Hygra (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/friendster-hygra), [\[Hygra (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/friendster-wgh-hygra), [\[SNAP\]](http://snap.stanford.edu/data/com-Friendster.html), [\[Ligra clique-expanded graph (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/friendster-clique), [\[Ligra clique-expanded graph (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/friendster-wgh-clique)
 * orkut-group: [\[Hygra (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/orkut-group-hygra), [\[Hygra (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/orkut-group-wgh-hygra), [\[KONECT\]](http://konect.uni-koblenz.de/networks/orkut-groupmemberships) 
 
 * web: [\[Hygra (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/web-hygra), [\[Hygra (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/web-wgh-hygra), [\[KONECT\]](http://konect.uni-koblenz.de/networks/trackers-trackers)
 
 * livejournal: [\[Hygra (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/livejournal-hygra), [\[Hygra (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/livejournal-wgh-hygra), [\[KONECT\]](http://konect.uni-koblenz.de/networks/livejournal-groupmemberships)
 
+* rand1: [\[Hygra (unweighted)\](https://ppopp20-ae.s3.amazonaws.com/rand1-hygra), [\[Hygra (weighted)\](https://ppopp20-ae.s3.amazonaws.com/rand1-wgh-hygra)
 
+* rand2: [\[Hygra (unweighted)\](https://ppopp20-ae.s3.amazonaws.com/rand2-hygra), [\[Hygra (weighted)\](https://ppopp20-ae.s3.amazonaws.com/rand2-wgh-hygra)
+
+* rand3: [\[Hygra (unweighted)\](https://ppopp20-ae.s3.amazonaws.com/rand3-hygra), [\[Hygra (weighted)\](https://ppopp20-ae.s3.amazonaws.com/rand3-wgh-hygra)
+
+* random hypergraph with 10M vertices and 10M hyperedges, each with cardinality 10: \[Hygra (unweighted)\](https://ppopp20-ae.s3.amazonaws.com/rand-10M-10M-10-hygra), \[Hygra (weighted)\](https://ppopp20-ae.s3.amazonaws.com/rand-10M-10M-10-wgh-hygra)
 
 To run the timing experiments, navigate to the directory with the hypergraph applications:
 
