@@ -58,7 +58,7 @@ Step-by-Step Instructions
 
 For a quick test, the user may run the scalability
 experiments on a small dataset provided in the inputs/ directory by passing
-"QUICK" as an argument to the scripts. This will not require any generation or download of files.
+"QUICK" as an argument to the script. This will not require any generation or download of files.
 
 ```
 $ cd ppopp20-ae/apps/hyper/
