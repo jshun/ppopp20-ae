@@ -143,13 +143,13 @@ format:
 
 * livejournal: [\[Hygra (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/livejournal-hygra), [\[Hygra (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/livejournal-wgh-hygra), [\[KONECT\]](http://konect.uni-koblenz.de/networks/livejournal-groupmemberships)
 
-* rand1: [\[Hygra (unweighted)\](https://ppopp20-ae.s3.amazonaws.com/rand1-hygra), [\[Hygra (weighted)\](https://ppopp20-ae.s3.amazonaws.com/rand1-wgh-hygra)
+* rand1: [\[Hygra (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand1-hygra), [\[Hygra (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand1-wgh-hygra)
 
-* rand2: [\[Hygra (unweighted)\](https://ppopp20-ae.s3.amazonaws.com/rand2-hygra), [\[Hygra (weighted)\](https://ppopp20-ae.s3.amazonaws.com/rand2-wgh-hygra)
+* rand2: [\[Hygra (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand2-hygra), [\[Hygra (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand2-wgh-hygra)
 
-* rand3: [\[Hygra (unweighted)\](https://ppopp20-ae.s3.amazonaws.com/rand3-hygra), [\[Hygra (weighted)\](https://ppopp20-ae.s3.amazonaws.com/rand3-wgh-hygra)
+* rand3: [[\[Hygra (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand3-hygra), [[\[Hygra (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand3-wgh-hygra)
 
-* random hypergraph with 10M vertices and 10M hyperedges, each with cardinality 10: \[Hygra (unweighted)\](https://ppopp20-ae.s3.amazonaws.com/rand-10M-10M-10-hygra), \[Hygra (weighted)\](https://ppopp20-ae.s3.amazonaws.com/rand-10M-10M-10-wgh-hygra)
+* random hypergraph with 10M vertices and 10M hyperedges, each with cardinality 10: [\[Hygra (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-10M-10-hygra), [\[Hygra (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/rand-10M-10M-10-wgh-hygra)
 
 To run the timing experiments, navigate to the directory with the hypergraph applications:
 
