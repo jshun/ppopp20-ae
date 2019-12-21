@@ -26,11 +26,11 @@ dataDir = "../../inputs/"
 applications = ["HyperBFS-Threshold","HyperBC-Threshold","HyperCC-Threshold"]
 wapplications = ["HyperSSSP-Threshold"]
 
-testfiles = [("com-orkut-ligrah","0"),("livejournal-ligrah","0")]
+testfiles = [("com-orkut-hygra","0"),("livejournal-hygra","0")]
 
-wtestfiles = [("com-orkut-wgh-ligrah","0"),("livejournal-wgh-ligrah","0")]
+wtestfiles = [("com-orkut-wgh-hygra","0"),("livejournal-wgh-hygra","0")]
 
-edgeawarefiles=["livejournal-ligrah","livejournal-wgh-ligrah"]
+edgeawarefiles=["livejournal-hygra","livejournal-wgh-hygra"]
 
 processors = [int(threads)]
 

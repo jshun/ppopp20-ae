@@ -31,12 +31,12 @@ applications = ["HyperBFS","HyperBC","HyperCC","HyperPageRank","HyperKCore-Effic
 mis = ["HyperMIS"]
 wapplications = ["HyperSSSP"]
 
-testfiles = [("com-orkut-ligrah","0"),("friendster-ligrah","0"),("rand1-ligrah","0"),("rand3-ligrah","0"),("orkut-group-ligrah","0"),("web-ligrah","0"),("livejournal-ligrah","0")]
+testfiles = [("com-orkut-hygra","0"),("friendster-hygra","0"),("rand1-hygra","0"),("rand3-hygra","0"),("orkut-group-hygra","0"),("web-hygra","0"),("livejournal-hygra","0")]
 
 
-wtestfiles = [("com-orkut-wgh-ligrah","0"),("friendster-wgh-ligrah","0"),("rand1-wgh-ligrah","0"),("rand3-wgh-ligrah","0"),("orkut-group-wgh-ligrah","0"),("web-wgh-ligrah","0"),("livejournal-wgh-ligrah","0")]
+wtestfiles = [("com-orkut-wgh-hygra","0"),("friendster-wgh-hygra","0"),("rand1-wgh-hygra","0"),("rand3-wgh-hygra","0"),("orkut-group-wgh-hygra","0"),("web-wgh-hygra","0"),("livejournal-wgh-hygra","0")]
 
-edgeawarefiles=["orkut-group-ligrah","orkut-group-wgh-ligrah","web-ligrah","web-wgh-ligrah","livejournal-ligrah","livejournal-wgh-ligrah"]
+edgeawarefiles=["orkut-group-hygra","orkut-group-wgh-hygra","web-hygra","web-wgh-hygra","livejournal-hygra","livejournal-wgh-hygra"]
 
 
 processors = [1,int(threads)]
@@ -97,8 +97,8 @@ for app in wapplications:
 #include large file for testing if LARGE is passed
 if datatype == "LARGE":
     print "LARGE: including large file in experiments"
-    testfiles = [("rand2-ligrah","0")]
-    wtestfiles = [("rand2-wgh-ligrah","0")]
+    testfiles = [("rand2-hygra","0")]
+    wtestfiles = [("rand2-wgh-hygra","0")]
     os.system("export CILK=1; make clean; LONG=1 make -j")
     for app in applications:
         for testfile in testfiles :

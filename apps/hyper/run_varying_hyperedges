@@ -27,9 +27,9 @@ applications = ["HyperBFS","HyperBC","HyperCC","HyperPageRank","HyperKCore-Effic
 mis = ["HyperMIS"]
 wapplications = ["HyperSSSP"]
 
-testfiles = [("rand-10M-10M-10-ligrah","0"),("rand-10M-20M-10-ligrah","0"),("rand-10M-30M-10-ligrah","0"),("rand-10M-40M-10-ligrah","0"),("rand-10M-50M-10-ligrah","0"),("rand-10M-60M-10-ligrah","0"),("rand-10M-70M-10-ligrah","0"),("rand-10M-80M-10-ligrah","0"),("rand-10M-90M-10-ligrah","0"),("rand-10M-100M-10-ligrah","0")]
+testfiles = [("rand-10M-10M-10-hygra","0"),("rand-10M-20M-10-hygra","0"),("rand-10M-30M-10-hygra","0"),("rand-10M-40M-10-hygra","0"),("rand-10M-50M-10-hygra","0"),("rand-10M-60M-10-hygra","0"),("rand-10M-70M-10-hygra","0"),("rand-10M-80M-10-hygra","0"),("rand-10M-90M-10-hygra","0"),("rand-10M-100M-10-hygra","0")]
 
-wtestfiles = [("rand-10M-10M-10-wgh-ligrah","0"),("rand-10M-20M-10-wgh-ligrah","0"),("rand-10M-30M-10-wgh-ligrah","0"),("rand-10M-40M-10-wgh-ligrah","0"),("rand-10M-50M-10-wgh-ligrah","0"),("rand-10M-60M-10-wgh-ligrah","0"),("rand-10M-70M-10-wgh-ligrah","0"),("rand-10M-80M-10-wgh-ligrah","0"),("rand-10M-90M-10-wgh-ligrah","0"),("rand-10M-100M-10-wgh-ligrah","0")]
+wtestfiles = [("rand-10M-10M-10-wgh-hygra","0"),("rand-10M-20M-10-wgh-hygra","0"),("rand-10M-30M-10-wgh-hygra","0"),("rand-10M-40M-10-wgh-hygra","0"),("rand-10M-50M-10-wgh-hygra","0"),("rand-10M-60M-10-wgh-hygra","0"),("rand-10M-70M-10-wgh-hygra","0"),("rand-10M-80M-10-wgh-hygra","0"),("rand-10M-90M-10-wgh-hygra","0"),("rand-10M-100M-10-wgh-hygra","0")]
 
 processors = [int(threads)]
 

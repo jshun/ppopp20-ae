@@ -27,9 +27,9 @@ applications = ["HyperBFS","HyperBC","HyperCC","HyperPageRank","HyperKCore-Effic
 mis = ["HyperMIS"]
 wapplications = ["HyperSSSP"]
 
-testfiles = [("rand1-ligrah","0")]
+testfiles = [("rand1-hygra","0")]
 
-wtestfiles = [("rand1-wgh-ligrah","0")]
+wtestfiles = [("rand1-wgh-hygra","0")]
 
 processors = [1,2,4]+range(8,int(threads)+1,8)
 

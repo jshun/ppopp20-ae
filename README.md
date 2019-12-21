@@ -4,7 +4,7 @@ Practical Parallel Hypergraph Algorithms (PPoPP 2020 Artifact Evaluation)
 Getting Started Guide
 --------
 
-The framework code for Ligra-H is located in the ligra/ directory.
+The framework code for Hygra is located in the ligra/ directory.
 The code for the hypergraph algorithms is in the apps/hyper/
 directory, which is where compilation should be performed for the
 artifact evaluation.  Hypergraph generators and converters are
@@ -56,9 +56,10 @@ installed
 Step-by-Step Instructions
 --------
 
-For a quick test, the user may run the scalability
-experiments on a small dataset provided in the inputs/ directory by passing
-"QUICK" as an argument to the script. This will not require any generation or download of files.
+For a quick test, the user may run the scalability experiments on a
+small dataset provided in the inputs/ directory by passing "QUICK" as
+an argument to the script. This will not require any generation or
+download of files.
 
 ```
 $ cd ppopp20-ae/apps/hyper/
@@ -103,7 +104,6 @@ $ ./download_datasets #downloads all datasets except for the large ones; this wi
 $ cd ..
 ```
 
-
 Here are other possible ways to run the download_datasets script:
 
 ```
@@ -113,7 +113,32 @@ $ ./download_datasets SIZES #downloads random hypergraphs of varying sizes
 $ ./download_datasets DIRECTION #downloads the com-orkut and livejournal datasets 
 ```
 
-Then, navigate to the directory with the hypergraph applications:
+The datasets come from the following sources:
+
+* [Stanford Large Network Dataset Collection (SNAP)](http://snap.stanford.edu/data/index.html)
+
+* [Koblenz Network Collection (KONECT)](http://konect.uni-koblenz.de/)
+
+* The synthetic random hypergraph generator provided in the utils/ directory.
+
+Files can be downloaded directly from
+[SNAP](http://snap.stanford.edu/data/index.html) and
+[KONECT](http://konect.uni-koblenz.de/) and converted to Hygra format
+using the converters described below in the **Utilities** section of
+this README file. Random hypergraphs can be generated directly using
+the random hypergraph generator described in the **Utilities**
+section. Weighted hypergraphs can be generated from the unweighted
+hypergraphs using the *adjHypergraphAddWeights* script described in
+the **Utilities** section.
+
+Here are the links to specific files in Hygra format (which can be
+downloaded individually) and the corresponding files in SNAP or KONECT
+format:
+
+* com-orkut: [Hygra (unweighted)](https://ppopp20-ae.s3.amazonaws.com/com-orkut-hygra), [Hygra (unweighted)](https://ppopp20-ae.s3.amazonaws.com/com-orkut-wgh-hygra), [SNAP](http://snap.stanford.edu/data/com-Orkut.html)
+* 
+
+To run the timing experiments, navigate to the directory with the hypergraph applications:
 
 ```
 $ cd apps/hyper/
@@ -209,33 +234,33 @@ downloaded from https://ppopp20-ae.s3.amazonaws.com/com-orkut-MESH.
 Expected output format
 --------
 
-The expected output format of the Ligra-H code is one or more lines with
+The expected output format of the Hygra code is one or more lines with
 the running time of each trial. For example:
 
 ```
-$ numactl -i all ./HyperBFS -s ../../inputs/com-orkut-ligrah #running 3 trials on all threads
+$ numactl -i all ./HyperBFS -s ../../inputs/com-orkut-hygra #running 3 trials on all threads
 Running time : 0.031
 Running time : 0.031
 Running time : 0.033
 
-$ numactl -i all ./HyperBFS -s -rounds 1 ../../inputs/com-orkut-ligrah #running 1 trial on all threads
+$ numactl -i all ./HyperBFS -s -rounds 1 ../../inputs/com-orkut-hygra #running 1 trial on all threads
 Running time : 0.031
 
-$ CILK_NWORKERS=1 ./HyperBFS -s -rounds 1 ../../inputs/com-orkut-ligrah #running 1 trial on one thread
+$ CILK_NWORKERS=1 ./HyperBFS -s -rounds 1 ../../inputs/com-orkut-hygra #running 1 trial on one thread
 Running time : 1.04
 
 ```
 
 The provided scripts will run multiple experiments, and for each experiment it will output a line containing
 the name of the algorithm, number of threads used, and the name of the
-dataset (with a suffix of -ligrah), followed by one or more lines with
+dataset (with a suffix of -hygra), followed by one or more lines with
 the running time of each trial. For example:
 
 ```
-HyperBFS 1 thread(s) on com-orkut-ligrah
+HyperBFS 1 thread(s) on com-orkut-hygra
 Running time : 1.04
 
-HyperBFS 144 thread(s) on com-orkut-ligrah
+HyperBFS 144 thread(s) on com-orkut-hygra
 Running time : 0.031
 Running time : 0.031
 Running time : 0.033
@@ -289,7 +314,7 @@ The remaining sections contain instructions to run any individual
 experiments that the user may want to run.
 
 
-Running code in Ligra-H
+Running code in Hygra
 -------
 The hypergraph applications are located in the apps/hyper/
 directory. The applications take the input hypergraph as input as well
@@ -316,7 +341,7 @@ generated with the hypergraph generator in the utils/ directory.
 
 
 
-Input Format for Ligra-H applications
+Input Format for Hygra applications
 -----------
 The input can be in either adjacency hypergraph format or binary format.
 
@@ -398,13 +423,13 @@ $ ./randHypergraph -nv 100000000 -nh 100000000 -c 10 randHypergraph_output
 format](http://snap.stanford.edu/data/index.html) and converts it to
 symmetric adjacency hypergraph format. The first required parameter is
 the input (SNAP) file name and second required parameter is the output
-(Ligra) file name.
+(Hygra) file name.
 
 **KONECTtoHyperAdj** converts a bipartite graph in [KONECT
 format](http://konect.uni-koblenz.de/) (the out.* file) and converts
 it to symmetric adjacency hypergraph format. The first required
 parameter is the input (KONECT) file name and second required
-parameter is the output (Ligra) file name.
+parameter is the output (Hygra) file name.
 
 **adjHypergraphAddWeights** adds random integer weights in the range
 [1,...,*log<sub>2</sub>*(max(number of vertices, number of
@@ -421,9 +446,9 @@ and .hidx.
 
 Examples:
 ```
-$ ./communityToHyperAdj SNAPfile LigraHFile
-$ ./KONECTtoHyperAdj KONECTfile LigraHfile
-$ ./adjHypergraphAddWeights unweightedLigraHFile weightedLigraHFile
+$ ./communityToHyperAdj SNAPfile HygraFile
+$ ./KONECTtoHyperAdj KONECTfile Hygrafile
+$ ./adjHypergraphAddWeights unweightedHygraFile weightedHygraFile
 $ ./hyperAdjToBinary test
 $ ./hyperAdjToBinary -w test-wgh
 ```

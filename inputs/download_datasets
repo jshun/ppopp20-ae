@@ -12,17 +12,17 @@ if len(sys.argv) >= 2:
 
 #print "Downloading " + datatype + " datasets..."
 
-randtestfiles = ["rand1-ligrah","rand1-wgh-ligrah"]
+randtestfiles = ["rand1-hygra","rand1-wgh-hygra"]
 
-directionfiles = ["com-orkut-ligrah","com-orkut-wgh-ligrah","livejournal-ligrah","livejournal-wgh-ligrah"]
+directionfiles = ["com-orkut-hygra","com-orkut-wgh-hygra","livejournal-hygra","livejournal-wgh-hygra"]
 
-testfiles = ["com-orkut-ligrah","friendster-ligrah","rand1-ligrah","rand3-ligrah","orkut-group-ligrah","web-ligrah","livejournal-ligrah","com-orkut-wgh-ligrah","friendster-wgh-ligrah","rand1-wgh-ligrah","rand3-wgh-ligrah","orkut-group-wgh-ligrah","web-wgh-ligrah","livejournal-wgh-ligrah"]
+testfiles = ["com-orkut-hygra","friendster-hygra","rand1-hygra","rand3-hygra","orkut-group-hygra","web-hygra","livejournal-hygra","com-orkut-wgh-hygra","friendster-wgh-hygra","rand1-wgh-hygra","rand3-wgh-hygra","orkut-group-wgh-hygra","web-wgh-hygra","livejournal-wgh-hygra"]
 
-largetestfiles = ["rand2-ligrah","rand2-wgh-ligrah"]
+largetestfiles = ["rand2-hygra","rand2-wgh-hygra"]
 
 cliquefiles = ["friendster-clique","friendster-wgh-clique"]
 
-sizefiles = ["rand-10M-10M-10-ligrah","rand-10M-20M-10-ligrah","rand-10M-30M-10-ligrah","rand-10M-40M-10-ligrah","rand-10M-50M-10-ligrah","rand-10M-60M-10-ligrah","rand-10M-70M-10-ligrah","rand-10M-80M-10-ligrah","rand-10M-90M-10-ligrah","rand-10M-100M-10-ligrah","rand-10M-10M-10-wgh-ligrah","rand-10M-20M-10-wgh-ligrah","rand-10M-30M-10-wgh-ligrah","rand-10M-40M-10-wgh-ligrah","rand-10M-50M-10-wgh-ligrah","rand-10M-60M-10-wgh-ligrah","rand-10M-70M-10-wgh-ligrah","rand-10M-80M-10-wgh-ligrah","rand-10M-90M-10-wgh-ligrah","rand-10M-100M-10-wgh-ligrah"]
+sizefiles = ["rand-10M-10M-10-hygra","rand-10M-20M-10-hygra","rand-10M-30M-10-hygra","rand-10M-40M-10-hygra","rand-10M-50M-10-hygra","rand-10M-60M-10-hygra","rand-10M-70M-10-hygra","rand-10M-80M-10-hygra","rand-10M-90M-10-hygra","rand-10M-100M-10-hygra","rand-10M-10M-10-wgh-hygra","rand-10M-20M-10-wgh-hygra","rand-10M-30M-10-wgh-hygra","rand-10M-40M-10-wgh-hygra","rand-10M-50M-10-wgh-hygra","rand-10M-60M-10-wgh-hygra","rand-10M-70M-10-wgh-hygra","rand-10M-80M-10-wgh-hygra","rand-10M-90M-10-wgh-hygra","rand-10M-100M-10-wgh-hygra"]
 
 bucket="https://ppopp20-ae.s3.amazonaws.com/"
 
