@@ -56,6 +56,15 @@ installed
 Step-by-Step Instructions
 --------
 
+For a quick test, the user may run the scalability
+experiments on a small dataset provided in the inputs/ directory by passing
+"QUICK" as an argument to the scripts. This will not require any generation or download of files.
+
+```
+$ cd ppopp20-ae/apps/hyper/
+$ ./run_scalability QUICK | tee scalability_results.txt #default: runs experiments on a small dataset
+```
+
 All of the scripts with default configurations (without large test
 files) can be run with the following command. The expected running
 time of this script is several days on a multicore machine with tens
@@ -67,7 +76,7 @@ $ ./runall
 ```
 
 The following script will skip the scalability tests for all of the
-inputs except com-orkut, and also skip the test on varying thread
+inputs except a small dataset, and also skip the test on varying thread
 counts on Rand1. This script should finish in several hours on a
 multicore machine with tens of cores.
 
@@ -79,6 +88,7 @@ $ ./runall-quick
 This section describes each of the commands in more detail, including
 different possible configurations.
 
+
 The following command downloads all of the datasets used in the
 paper. By default, the large Rand2 hypergraph and the clique-expanded
 graph for Friendster are not downloaded. However, the user may
@@ -86,12 +96,6 @@ download the large datasets by passing "LARGE" as an argument to the
 script.  The total storage required without the large datasets is 313 GB
 and with the large datasets is 1 TB.
 
-For a quick test, the user may download and run the scalability
-experiments on just one dataset (com-orkut) by passing
-"QUICK" as an argument to the scripts. The total storage required for
-these two datasets is 49 GB.  (The download script will only download
-the com-orkut dataset if "QUICK" is a parameter, and will need to be rerun
-without "QUICK" if the user later wants to download other datasets.)
 
 ```
 $ cd ppopp20-ae/inputs/
@@ -99,11 +103,11 @@ $ ./download_datasets #downloads all datasets except for the large ones; this wi
 $ cd ..
 ```
 
+
 Here are other possible ways to run the download_datasets script:
 
 ```
 $ ./download_datasets LARGE #downloads the large datasets; this will take a few hours
-$ ./download_datasets QUICK #downloads the com-orkut dataset for quick testing
 $ ./download_datasets RAND1 #downloads the Rand1 dataset for testing varying thread counts
 $ ./download_datasets SIZES #downloads random hypergraphs of varying sizes
 $ ./download_datasets DIRECTION #downloads the com-orkut and livejournal datasets 
@@ -141,7 +145,7 @@ $ ./run_scalability | tee scalability_results.txt #default: runs experiments on 
 
 Here are other ways to run the run_scalability script:
 ```
-$ ./run_scalability QUICK | tee scalability_results.txt #runs experiments on only com-orkut
+$ ./run_scalability QUICK | tee scalability_results.txt #runs experiments on a small dataset
 $ ./run_scalability LARGE | tee scalability_results.txt #runs experiments on all datasets; this will take at least several days to run
 ```
 

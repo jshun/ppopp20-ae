@@ -4,7 +4,6 @@ export CILK=1
 
 cd inputs/;
 chmod 777 download_datasets
-./download_datasets QUICK;
 ./download_datasets SIZES;
 ./download_datasets DIRECTION;
 
