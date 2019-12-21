@@ -136,7 +136,14 @@ downloaded individually) and the corresponding files in SNAP or KONECT
 format:
 
 * com-orkut: [\[Hygra (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/com-orkut-hygra), [\[Hygra (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/com-orkut-wgh-hygra), [\[SNAP\]](http://snap.stanford.edu/data/com-Orkut.html)
-* 
+* friendster: [\[Hygra (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/friendster-hygra), [\[Hygra (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/friendster-wgh-hygra), [\[SNAP\]](http://snap.stanford.edu/data/com-Friendster.html)
+* orkut-group: [\[Hygra (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/orkut-group-hygra), [\[Hygra (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/orkut-group-wgh-hygra), [\[KONECT\]](http://konect.uni-koblenz.de/networks/orkut-groupmemberships) 
+
+* web: [\[Hygra (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/web-hygra), [\[Hygra (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/web-wgh-hygra), [\[KONECT\]](http://konect.uni-koblenz.de/networks/trackers-trackers)
+
+* livejournal: [\[Hygra (unweighted)\]](https://ppopp20-ae.s3.amazonaws.com/livejournal-hygra), [\[Hygra (weighted)\]](https://ppopp20-ae.s3.amazonaws.com/livejournal-wgh-hygra), [\[KONECT\]](http://konect.uni-koblenz.de/networks/livejournal-groupmemberships)
+
+
 
 To run the timing experiments, navigate to the directory with the hypergraph applications:
 
