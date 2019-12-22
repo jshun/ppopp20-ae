@@ -67,9 +67,9 @@ $ ./run_scalability QUICK | tee scalability_results.txt #default: runs experimen
 ```
 
 All of the scripts with default configurations (without large test
-files) can be run with the following command. The expected running
-time of this script is several days on a multicore machine with tens
-of cores.
+files and the experiment in Ligra with the clique-expanded graph) can
+be run with the following command. The expected running time of this
+script is several days on a multicore machine with tens of cores.
 
 ```
 $ cd ppopp20-ae/
