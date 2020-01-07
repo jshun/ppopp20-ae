@@ -18,7 +18,7 @@ PowerEdge R930 with four 2.4GHz 18-core E7-8867 v4 Xeon processors)
 with 1TB of RAM. We use 'numactl -i all' for parallel experiments for
 better performance.
 
-First, install a compiler version with support for Cilk Plus (g++
+First, install a compiler with support for Cilk Plus (g++
 version 5.4.0 or later or Tapir/LLVM) on a Linux machine.  If using an AWS EC2 instance with
 RedHat OS, the following instructions can be used to easily install g++ with
 Cilk Plus:
