@@ -11,7 +11,7 @@ artifact evaluation.  Hypergraph generators and converters are
 provided in the utils/ directory.
 
 Compilation is done from within the apps/hyper/ directory. Experiments
-in the paper were performed using the g++ version 7.4.0 compiler with
+in the paper were performed using the g++ version 5.5.0 compiler with
 support for Cilk Plus. The operating system was Ubuntu 16.04 and the
 machine was a 72-core machine with 2-way hyper-threading (Dell
 PowerEdge R930 with four 2.4GHz 18-core E7-8867 v4 Xeon processors)
