@@ -1,6 +1,8 @@
 Practical Parallel Hypergraph Algorithms (PPoPP 2020 Artifact Evaluation)
 ======================
 
+The latest code is in the [Ligra GitHub repository](https://github.com/jshun/ligra/).
+
 Getting Started Guide
 --------
 
@@ -394,10 +396,10 @@ The input can be in either adjacency hypergraph format or binary format.
  specific format is as follows:
 
 AdjacencyHypergraph  
-&lt;nv>
-&lt;mv>
-&lt;nh>
-&lt;mh>
+&lt;nv>		     
+&lt;mv>		     
+&lt;nh>		     
+&lt;mh>		     
 &lt;ov0>  
 &lt;ov1>  
 ...  
